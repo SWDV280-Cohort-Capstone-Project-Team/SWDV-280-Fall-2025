@@ -1,0 +1,33 @@
+
+
+.services-section-container {
+    padding: 20px 0 0px 0; 
+    text-align: center;
+}
+
+.card-grid {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    row-gap: 30px;    
+    column-gap: 30px;
+    width: 100%;
+    margin: 0;  
+    padding: 0 30px 0px 30px;
+    min-width: 0; 
+}
+
+
+
+@media (max-width: 1024px) {
+    .card-grid {
+        /* Change to 2 columns on tablets/smaller screens */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .card-grid {
+        /* Change to 1 column for stacking on phones */
+        grid-template-columns: 1fr; 
+    }
+}
