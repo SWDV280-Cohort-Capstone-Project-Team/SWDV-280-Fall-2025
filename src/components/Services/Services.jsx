@@ -3,7 +3,7 @@ import Card from '../Card/Card'; //  the reusable Card template
 import './Services.css'; //  holds the CSS Grid rules
 
 import BreakdownIcon from '../../assets/Icons/breakdown 1.svg';
-import CarPartsIcon from '../../assets/Icons/car-Parts 1.svg';
+import CarPartsIcon from '../../assets/Icons/car-parts 1.svg';
 import FourWheelIcon from '../../assets/Icons/four-wheel-drive 1.svg';
 import EngineIcon from '../../assets/Icons/engine 1.svg';
 import HeaterIcon from '../../assets/Icons/heater.svg';
