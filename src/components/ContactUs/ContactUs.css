@@ -1,0 +1,104 @@
+/* src/components/ContactUs/ContactUs.css */
+
+.contact-section-container {
+    padding: 60px 20px; 
+    text-align: center; 
+}
+input,textarea{
+    color: black;
+
+}
+.contact-title {
+    font-size: 3em; 
+    font-weight: bold;
+    /* REMOVED: color: #333; (Will inherit from global styles) */
+    margin-bottom: 50px; 
+}
+
+.contact-form-wrapper {
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    text-align: left; 
+}
+
+.form-group {
+    margin-bottom: 25px; 
+}
+
+.form-group label {
+    display: block; 
+    font-weight: 600;
+    /* REMOVED: color: #333; (Will inherit) */
+    margin-bottom: 8px; 
+    font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%; 
+    padding: 12px 15px;
+    border: 1px solid #c7dce0; 
+    border-radius: 25px; 
+    font-size: 1em;
+    font-family: inherit;
+    box-sizing: border-box; 
+    
+    /* KEEP: Yellowish background color */
+    background-color: #f8f2db; 
+    
+    /* REMOVED: color: #333; (Will inherit text color) */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group textarea {
+    resize: vertical; 
+    min-height: 120px; 
+    border-radius: 18px; 
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #8dbbb7; 
+    box-shadow: 0 0 0 3px rgba(141, 187, 183, 0.3); 
+    outline: none;
+}
+
+.submit-button {
+    /* REMOVED: color: #333; (Will inherit text color) */
+    /* REMOVED: border, background-color (Will inherit button styles from index.css) */
+    
+    padding: 0.6em 1.2em; /* Use generic button padding for better inheritance */
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: block; 
+    margin-left: auto; 
+    margin-top: 30px;
+}
+
+.submit-button:hover {
+    /* Only define hover properties needed for contrast/shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2.5em;
+        margin-bottom: 30px;
+    }
+    .contact-form-wrapper {
+        padding: 25px;
+        max-width: 90%; 
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+}

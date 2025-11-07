@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Reset and Font - Can go in a global CSS file, but included here for completeness */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  padding: 0 35px;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+/* Photo Gallery Specific Styles */
+
+.carousel-container {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.carousel-container h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1200px;
+  position: relative;
+}
+
+.wrapper i {
+  top: 50%;
+  height: 44px;
+  width: 44px;
+  color: #343F4F;
+  cursor: pointer;
+  font-size: 1.15rem;
+  position: absolute;
+  text-align: center;
+  line-height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.1s linear;
+  z-index: 10; /* Ensure arrows are above the carousel */
+  color: #fff; /* Example: Change icon color to White */
+  
+  /* 💥 CHANGE ARROW BACKGROUND COLOR HERE (The circle) 💥 */
+  background: #203E56; /* Example: Change circle background to Dark Blue */
+}
+
+.wrapper i:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.wrapper i:hover {
+  background: #4c9f9f;
+}
+
+.wrapper i:first-child {
+  left: -22px;
+}
+
+.wrapper i:last-child {
+  right: -22px;
+}
+
+/* The display: none for arrows is now handled by conditional rendering in React */
+
+.wrapper .carousel {
+  font-size: 0px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  /* Add margin to prevent the wrapper's edge from touching the main container */
+  margin: 0 22px;
+}
+
+.carousel.dragging {
+  cursor: grab;
+  scroll-behavior: auto;
+}
+
+.carousel.dragging img {
+  pointer-events: none;
+}
+
+.carousel img {
+  height: 340px;
+  object-fit: cover;
+  user-select: none;
+  margin-left: 14px;
+  width: calc(100% / 3);
+  /* Make sure images are inline-block to respect white-space: nowrap and margins */
+  display: inline-block; 
+}
+
+.carousel img:first-child {
+  margin-left: 0px;
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 900px) {
+  .carousel img {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .carousel img {
+    width: 100%;
+  }
+}

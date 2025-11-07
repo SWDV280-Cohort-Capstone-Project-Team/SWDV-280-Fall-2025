@@ -5,9 +5,7 @@ function Card({ iconPath, title, description }) {
     return(
         <div className="service-card">
             
-            {/* Icon Area */}
             <div className="card-icon-area">
-                {/* NOTE: You will need to replace the 'iconPath' with the actual imported icon */}
                 <img src={iconPath} alt={`${title} icon`} className="service-icon" /> 
             </div>
 

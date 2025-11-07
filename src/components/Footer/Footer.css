@@ -1,0 +1,150 @@
+:root {
+  --footer-height: 220px; /* adjust if you change footer size */
+  --teal-bg: #95c7c4;
+  --text-dark: #17383b;
+  --muted: rgba(23,56,59,0.7);
+}
+
+/* Make sure site content doesn't get hidden behind the fixed footer.
+   Put this in index.css as well (we'll explain further below). */
+.site-footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--teal-bg);
+  color: var(--text-dark);
+  padding: 26px 22px 14px;
+  box-sizing: border-box;
+  z-index: 50;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* center the content and limit width */
+.footer-inner {
+  display: flex;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* columns */
+.col {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* logo area */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.logo-circle {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.04);
+  border: 3px solid rgba(0,0,0,0.08);
+}
+.footer-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.brand { font-weight: 600; font-size: 1.05rem; letter-spacing: 0.2px; }
+
+/* contact text */
+.contact-block { margin-top: 8px; line-height: 1.45; }
+.contact-block .label { font-size: 0.85rem; margin-top: 8px; color: var(--muted); }
+.contact-block .value { font-size: 0.9rem; margin-top: 4px; color: var(--text-dark); }
+.contact-block .small { font-size: 0.85rem; color: var(--text-dark); }
+
+/* center follow column and social */
+.follow { text-align: center; }
+.follow-title { font-weight: 600; margin-bottom: 12px; }
+.social-list {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.social-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 28px;
+}
+.social-img {
+  width: 28px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+}
+.social-fa {
+  display: inline-block;
+  width: 28px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: rgba(0,0,0,0.04);
+  border-radius: 4px;
+  padding: 6px 6px;
+}
+/* hide the font icon only if the image successfully loaded (the onError hides image and FA remains) */
+
+/* social label text */
+.social-text { font-size: 0.98rem; color: var(--text-dark); }
+
+/* links column */
+.links { text-align: right; }
+.links-title { font-weight: 600; margin-bottom: 12px; }
+.quick-links { list-style: none; padding: 0; margin: 0; }
+.quick-links li { margin: 8px 0; }
+.quick-links li a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.quick-links li a:hover { text-decoration: underline; }
+
+/* divider & copyright */
+.divider {
+  margin: 18px auto 8px;
+  height: 1px;
+  max-width: 1100px;
+  background: rgba(23,56,59,0.08);
+}
+.copyright {
+  text-align: center;
+  color: var(--text-dark);
+  opacity: 0.9;
+  padding: 8px 0 12px;
+  font-size: 0.95rem;
+}
+
+/* responsive */
+@media (max-width: 880px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .links { text-align: center; }
+}
+
+/* make footer height accessible to page layout (JS-less) by using CSS var --footer-height
+   Note: update --footer-height if you change padding/spacing. */
+:root { --footer-height: 220px; }
