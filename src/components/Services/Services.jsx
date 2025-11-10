@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card/Card'; //  the reusable Card template
+import Card from '../Card/Card'; //   reusable Card template
 import './Services.css'; //  holds the CSS Grid rules
 
 import BreakdownIcon from '../../assets/Icons/breakdown 1.svg';
