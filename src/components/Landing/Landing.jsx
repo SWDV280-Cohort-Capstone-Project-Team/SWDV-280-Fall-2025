@@ -10,7 +10,7 @@ export default function Landing() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className="lr-root">
+    <div className="lr-root" id='Home'>
       <header className="lr-topbar">
         <div className="lr-container">
           <div className="lr-brand">
@@ -31,10 +31,10 @@ export default function Landing() {
           </button>
 
           <nav className={`lr-nav ${menuOpen ? 'open' : ''}`}>
-            <a href="#home" onClick={closeMenu}>Home</a>
+            <a href="#Home" onClick={closeMenu}>Home</a>
             <a href="#appointment" onClick={closeMenu}>Appointment</a>
-            <a href="#services" onClick={closeMenu}>Services</a>
-            <a href="#about" onClick={closeMenu}>About</a>
+            <a href="#Services" onClick={closeMenu}>Services</a>
+            <a href="#About" onClick={closeMenu}>About</a>
             <a href="#login" onClick={closeMenu}>Log In</a>
           </nav>
         </div>

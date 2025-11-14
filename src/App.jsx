@@ -9,6 +9,7 @@ import Landing from './components/Landing/Landing';
 import ContactUs from './components/ContactUs/ContactUs';
 import PhotoGallery from './components/PhotoGallery/PhotoGallery';
 import Footer from './components/Footer/Footer'
+import Testimonials from './components/Testimonials/Testimonials'
 import './App.css'; 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Services /> 
         <ContactUs />
         <PhotoGallery/>
+        <Testimonials />
       </main>
       <Footer/>
     </>  

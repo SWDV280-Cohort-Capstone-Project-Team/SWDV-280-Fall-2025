@@ -5,7 +5,7 @@ import MainPic from '../../assets/images/MainPic.jpg';
 
 function AboutSection() {
     return(
-        <section className="who-we-are-container">
+        <section className="who-we-are-container" id='About'>
         <h2 className="section-title">Who We Are</h2>
         
         <div className="content-block">

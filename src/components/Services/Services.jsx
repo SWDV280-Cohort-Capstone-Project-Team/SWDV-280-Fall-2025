@@ -69,7 +69,7 @@ const serviceData = [
 
 function Services() {
     return (
-        <section className="services-section-container">
+        <section className="services-section-container" id='Services'>
             <h2 className="section-title">Service We Provide</h2>
 
             {/*  receives the CSS Grid styles */}
