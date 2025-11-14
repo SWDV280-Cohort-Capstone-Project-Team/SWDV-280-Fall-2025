@@ -46,7 +46,7 @@ export default function Landing() {
           <div className="lr-hero-overlay">
             <div className="lr-hero-buttons">
               <a className="lr-btn" href="#appointment">Book Appointment</a>
-              <a className="lr-btn lr-secondary" href="#about">About Us</a>
+              <a className="lr-btn lr-secondary" href="#ContactUS">Contact Us</a>
             </div>
           </div>
         </section>
