@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Landing.css';
 import MainPic from '../../assets/images/MainPic.jpg';
 import Logo from '../../assets/Icons/logo.png';
@@ -35,7 +36,7 @@ export default function Landing() {
             <a href="#appointment" onClick={closeMenu}>Appointment</a>
             <a href="#services" onClick={closeMenu}>Services</a>
             <a href="#about" onClick={closeMenu}>About</a>
-            <a href="#login" onClick={closeMenu}>Log In</a>
+            <Link to="/login" onClick={closeMenu} className="lr-login-link">Log In</Link>
           </nav>
         </div>
       </header>
