@@ -3,6 +3,7 @@ import './Landing.css';
 import MainPic from '../../assets/images/MainPic.jpg';
 import Logo from '../../assets/Icons/logo.png';
 
+
 export default function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -45,7 +46,16 @@ export default function Landing() {
           <img src={MainPic} alt="Mechanic at work" className="lr-hero-img" />
           <div className="lr-hero-overlay">
             <div className="lr-hero-buttons">
-              <a className="lr-btn" href="#appointment">Book Appointment</a>
+
+              <a
+                className="lr-btn"
+                href="/#/appointment"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book Appointment
+              </a>
+
               <a className="lr-btn lr-secondary" href="#ContactUS">Contact Us</a>
             </div>
           </div>

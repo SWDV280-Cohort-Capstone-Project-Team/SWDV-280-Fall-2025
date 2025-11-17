@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="logo-wrap">
             <div className="logo-circle">
               {/* public/logo.png — MUST be in public folder */}
-              <img src="./assets\Icons\logo.png" alt="Otter Reliable logo" className="footer-logo" />
+              <img src="./assets/Icons/footer-logo.png" alt="footer-logo" className="footer-logo" />
             </div>
             <div className="brand">Otter Reliable</div>
           </div>
