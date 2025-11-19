@@ -59,11 +59,11 @@ export default function Footer() {
           <h3 className="links-title">Links</h3>
           <ul className="quick-links">
             {/* anchor links to page sections. Make sure your page has elements with matching IDs */}
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#service">Service</a></li>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#About">About</a></li>
+            <li><a href="#ContactUS">Contact</a></li>
+            <li><a href="#Gallery">Gallery</a></li>
+            <li><a href="#Services">Service</a></li>
           </ul>
         </div>
       </div>
