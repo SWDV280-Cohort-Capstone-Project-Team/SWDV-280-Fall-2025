@@ -140,7 +140,7 @@ const PhotoGallery = () => {
 
 
   return (
-    <section className="carousel-container">
+    <section className="carousel-container" id='Gallery'>
         <h2>Photo Gallery</h2>         <div className="wrapper">
           {showLeftArrow && (
             <i id="left" className="fa-solid fa-angle-left" onClick={() => scrollCarousel('left')}></i>
