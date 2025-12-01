@@ -18,7 +18,7 @@ This project demonstrates:
 
 - **Figma**  
   We used Figma to design the UX/UI for the website.  
-  **Link to our Figma files**: _add link here_
+  **Link to our Figma files**: https://www.figma.com/design/eBmO2Rx3jHgtx3nl0LYsTS/CWI-Final-Collaborative-Project?node-id=1-8&t=0VYuoaIddc8nohoE-1
 
 - **React**  
   We used React as our JavaScript framework for building the user interface.
