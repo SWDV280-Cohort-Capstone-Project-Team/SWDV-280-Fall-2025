@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card/Card'; //  the reusable Card template
+import Card from '../Card/Card'; //   reusable Card template
 import './Services.css'; //  holds the CSS Grid rules
 
 import BreakdownIcon from '../../assets/Icons/breakdown 1.svg';
@@ -69,7 +69,7 @@ const serviceData = [
 
 function Services() {
     return (
-        <section className="services-section-container">
+        <section className="services-section-container" id='Services'>
             <h2 className="section-title">Service We Provide</h2>
 
             {/*  receives the CSS Grid styles */}

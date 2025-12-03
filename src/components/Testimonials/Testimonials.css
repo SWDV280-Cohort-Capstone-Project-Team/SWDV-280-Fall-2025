@@ -1,0 +1,139 @@
+/* src/components/Testimonials/Testimonials.css */
+
+.testimonials-section-container {
+    padding: 60px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.testimonials-section-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* --- Horizontal Scroll Wrapper (Enables Scrolling) --- */
+.horizontal-scroll-wrapper {
+    /* Padding provides the margin from the edge of the screen */
+    padding: 0 30px; 
+    
+    overflow-x: auto; /* Enables horizontal scrolling */
+    overflow-y: hidden; 
+    
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling on touch devices */
+}
+
+.horizontal-scroll-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Edge scrollbar removal */
+}
+
+
+/* --- Carousel Container (The wide, scrollable content) --- */
+.testimonials-carousel {
+    display: flex;
+    flex-wrap: nowrap; /* Forces all cards onto one horizontal line */
+    min-width: fit-content; /* Guarantees the container is wide enough to scroll */
+    gap: 20px; 
+    
+    /* 💥 REMOVED: border-bottom: 2px solid #aac6c2; 💥 */
+    
+    /* Keep padding-bottom to separate content from the bottom edge */
+    padding-bottom: 20px; 
+}
+
+.testimonial-card-wrapper {
+    /* Fixed size for the card itself */
+    flex: 0 0 280px; 
+    
+    /* Visual Styling */
+    background-color: #fcfcf0; 
+    border: 3px solid #aac6c2; 
+    border-radius: 8px;
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- Image/Avatar Styling --- */
+.testimonial-image-area {
+    width: 100px; 
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%; /* Circular images */
+    border: 4px solid #aac6c2; 
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* --- Text and Rating Styles --- */
+.testimonial-content {
+    padding: 0 10px 10px 10px;
+}
+
+.testimonial-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.testimonial-rating {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.star-filled { color: gold; }
+.star-empty { color: #ccc; }
+
+.testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #555;
+    text-align: left;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablet View (2 Cards per row) */
+@media screen and (max-width: 1024px) {
+    .testimonials-carousel {
+        gap: 15px;
+    }
+    
+    .testimonial-card-wrapper {
+        flex: 0 0 45%; 
+    }
+}
+
+/* Mobile View (1 Card per row) */
+@media screen and (max-width: 700px) {
+    .testimonials-carousel {
+        gap: 10px;
+    }
+    
+    .testimonial-card-wrapper {
+        flex: 0 0 85%; 
+    }
+}
+
+/* Very Small Phone View */
+@media screen and (max-width: 480px) {
+    .testimonial-card-wrapper {
+        flex: 0 0 90%; 
+    }
+    
+    .horizontal-scroll-wrapper {
+        padding: 0 10px;
+    }
+}
