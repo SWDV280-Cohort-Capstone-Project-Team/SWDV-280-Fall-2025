@@ -30,7 +30,7 @@ This project demonstrates:
 
 - **FlatIcon**  
   We used FlatIcon for icons throughout the site.  
-  Especially an otter icon (link/author to be added), which has become our main mascot icon.
+  Especially an otter icon by William Richon, which has become our main mascot icon. (https://www.flaticon.com/free-icon/sea_12929510?term=otter&page=1&position=11&origin=search&related_id=12929510)
 
 ## Backend / DevOps Tools
 
