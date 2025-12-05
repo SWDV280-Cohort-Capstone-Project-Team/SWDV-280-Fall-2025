@@ -1,5 +1,5 @@
 {
- "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.17.0\",\"stackType\":\"root\",\"metadata\":{}}",
+ "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.18.0\",\"stackType\":\"root\",\"metadata\":{}}",
  "Metadata": {
   "AWS::Amplify::Platform": {
    "version": "1",
@@ -231,7 +231,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/e18270b600035416a067b63d8ba8c264c1302df4800782238a75fa1f32ccc2f3.json"
+       "/e51eb3654417f363bcfe49dc6bfc74816595e9b8c4d94cbbab93e9fdc007fc70.json"
       ]
      ]
     }
@@ -299,7 +299,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/f197944ad6ee73028b5fdb6237332776828f7b629797bbca59912e1909ed82d7.json"
+       "/2e4a50644d96008c8d85dfb8418997d146504a19066ad9ec870a217f279f1ceb.json"
       ]
      ]
     }
@@ -315,7 +315,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI00zNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUamekZAbVnFmZm6RaV5JZm5qXpBEBoAcZWkwFMAAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI00zNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUZGekaGeoaKWcWZmbpFpXklmbmpekEQGgARxDL5VAAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/CDKMetadata/Default"

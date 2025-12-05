@@ -1,5 +1,11 @@
 ## Final Project for CWI SWDV Program
 
+
+## To Do
+
+- NavBar only scrolls on the header
+- React Router or A tags
+
 ## Overview
 
 This repository contains the final project for the CWI SWDV program.  
@@ -64,5 +70,8 @@ This starts the Vite dev server. Follow the terminal output to open the app in y
 ## AWS SSO / Team Access
 
 - **AWS SSO**  
-  _Add steps here for team members to log in via AWS SSO and access Amplify if needed._
+```bash
+aws sso login
+npx ampx sandbox --profile default
+```
 

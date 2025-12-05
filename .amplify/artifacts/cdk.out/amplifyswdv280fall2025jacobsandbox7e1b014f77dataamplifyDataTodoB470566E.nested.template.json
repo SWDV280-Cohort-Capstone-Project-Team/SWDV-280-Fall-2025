@@ -2017,7 +2017,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQU/DMAyFfwv31ECncWetOALquE9u4lZZm6SKnaGp6n8n7dAQp+dPfrKfXUL5/AJPD/jNhTZDMdoW5ndiIXMU1IOqOv+JER0JxRWq4I0VG7xqiEOKmlSVWIL7w87f6zz2NJurRxdMC1/YjnRAJmXRwdyE8ebOuiicJr56DXO92eu2RsHjfeR/ekteryFyms72KeKW6HfzeKG4KN6dkJmE4XWVzHBIeiBZAyyr9yPJlERt7Xxsb32/KB8MwZkfL+UeyvyYM1tbxOTFOoLmpj/QdIfmNQEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwW6DMAyGn6X31BtU2n0F7dhNsHtlEoNSwEGx06pCvPsEnTrt9PuTP9l/Dnn2Bq87vMneun4/+AbmE4mSqxVtb4qWvzDiSEpxhSKw8+oDm4okpGjJFEk0jH/Y8nPGm5xnd2ccg2vgG5uBjihkPI4wV2F42GGgxeA0yZ0tzOWml02JivXz5H/6SGzXEkXg1ncp4tbo9/NwpbgYOZxRhFTgfQ0jBzgm25OuBZbV/Uw6JTXbulbsPHeL4eAILvJyzXPIM8h2F/F+HxOrHwmqR/4AjnTFWDYBAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/CDKMetadata/Default"
