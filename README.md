@@ -69,6 +69,8 @@ This starts the Vite dev server. Follow the terminal output to open the app in y
 
 ## AWS SSO / Team Access
 
+https://docs.amplify.aws/react/start/account-setup/
+
 - **AWS SSO**  
 ```bash
 aws sso login
