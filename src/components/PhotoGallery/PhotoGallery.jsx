@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import './PhotoGallery.css'; // We'll put the styles here
+import './PhotoGallery.css';
+import '../AboutSection/AboutSection.css'; // For section-title class
 
 // Replace with your actual image imports or an array of image URLs
 import image1 from '../../assets/images/Gallery1.jpg';
@@ -141,7 +142,7 @@ const PhotoGallery = () => {
 
   return (
     <section className="carousel-container" id='Gallery'>
-        <h2>Photo Gallery</h2>         <div className="wrapper">
+        <h2 className="section-title">Photo Gallery</h2>         <div className="wrapper">
           {showLeftArrow && (
             <i id="left" className="fa-solid fa-angle-left" onClick={() => scrollCarousel('left')}></i>
           )}

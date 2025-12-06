@@ -1,6 +1,7 @@
 // src/components/Testimonials/Testimonials.jsx
 import React, { useRef } from 'react'; // useRef is kept as it might be used internally by the carousel
 import './Testimonials.css';
+import '../AboutSection/AboutSection.css'; // For section-title class
 
 // Import images for testimonials 
 import samWise from '../../assets/images/Testimonials1.jpg';
@@ -34,7 +35,7 @@ const Testimonials = () => {
 
   return (
     <section className="testimonials-section-container">
-      <h2>Testimonials</h2>
+      <h2 className="section-title">Testimonials</h2>
       
       
       <div className="horizontal-scroll-wrapper">

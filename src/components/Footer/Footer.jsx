@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Footer.css";
 
 const SocialIcon = ({ imgPath, faClass, alt }) => {
@@ -18,6 +19,39 @@ const SocialIcon = ({ imgPath, faClass, alt }) => {
 };
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId) => {
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="site-footer" role="contentinfo" aria-label="Site footer">
       <div className="footer-inner">
@@ -58,12 +92,11 @@ export default function Footer() {
         <div className="col links">
           <h3 className="links-title">Links</h3>
           <ul className="quick-links">
-            {/* anchor links to page sections. Make sure your page has elements with matching IDs */}
-            <li><a href="#Home">Home</a></li>
-            <li><a href="#About">About</a></li>
-            <li><a href="#ContactUS">Contact</a></li>
-            <li><a href="#Gallery">Gallery</a></li>
-            <li><a href="#Services">Service</a></li>
+            <li><a href="/" onClick={handleHomeClick}>Home</a></li>
+            <li><a href="#About" onClick={(e) => { e.preventDefault(); scrollToSection('About'); }}>About</a></li>
+            <li><a href="#ContactUS" onClick={(e) => { e.preventDefault(); scrollToSection('ContactUS'); }}>Contact</a></li>
+            <li><a href="#Gallery" onClick={(e) => { e.preventDefault(); scrollToSection('Gallery'); }}>Gallery</a></li>
+            <li><a href="#Services" onClick={(e) => { e.preventDefault(); scrollToSection('Services'); }}>Service</a></li>
           </ul>
         </div>
       </div>

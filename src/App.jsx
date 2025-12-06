@@ -2,16 +2,16 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
+import NavBar from "./components/NavBar/NavBar";
 import Landing from "./components/Landing/Landing";
 import AboutSection from "./components/AboutSection/AboutSection";
 import Services from "./components/Services/Services";
 import ContactUs from "./components/ContactUs/ContactUs";
 import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
 import Testimonials from "./components/Testimonials/Testimonials";
+import AppointmentSection from "./components/AppointmentSection/AppointmentSection";
 import Footer from "./components/Footer/Footer";
-
-// correct import path based on your tree
-import AppointmentPage from "./components/pages/AppointmentPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 import "./App.css";
 
@@ -31,9 +31,19 @@ function Home() {
   );
 }
 
+function AppointmentPage() {
+  return (
+    <>
+      <AppointmentSection />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <Router>
+      <NavBar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/appointment" element={<AppointmentPage />} />

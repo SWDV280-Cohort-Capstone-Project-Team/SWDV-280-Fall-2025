@@ -6,15 +6,13 @@
     width: 100%;
 }
 
-.testimonials-section-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
 
 /* --- Horizontal Scroll Wrapper (Enables Scrolling) --- */
 .horizontal-scroll-wrapper {
     /* Padding provides the margin from the edge of the screen */
     padding: 0 30px; 
+    max-width: 1200px;
+    margin: 0 auto;
     
     overflow-x: auto; /* Enables horizontal scrolling */
     overflow-y: hidden; 

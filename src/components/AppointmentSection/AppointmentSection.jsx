@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./AppointmentPage.css";
-//import '../src/assets/images/background.jpg';
+import "../pages/AppointmentPage.css";
 
 const initialForm = {
   firstName: "",
@@ -17,7 +16,7 @@ const initialForm = {
   },
 };
 
-export default function AppointmentPage() {
+export default function AppointmentSection() {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
 
@@ -48,10 +47,9 @@ export default function AppointmentPage() {
   }
 
   return (
-    <>
-      <section className="appointment-wrapper">
+    <section className="appointment-wrapper" id="Appointment">
+      <h2 className="section-title">Book an Appointment</h2>
       <div className="appointment-card">
-        <h1 className="card-title">Book an Appointment</h1>
 
         <form onSubmit={handleSubmit} className="appointment-form">
           <label>
@@ -173,6 +171,6 @@ export default function AppointmentPage() {
         </form>
       </div>
     </section>
-    </>
   );
 }
+
