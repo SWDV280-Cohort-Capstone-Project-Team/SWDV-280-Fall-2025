@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { signUp, signIn, signOut, getCurrentUser, confirmSignUp, resendSignUpCode, fetchUserAttributes } from "aws-amplify/auth";
 import { generateClient } from "aws-amplify/data";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/style.css";
 import "./AppointmentPage.css";
 
 const getInitialForm = (email = "") => ({
@@ -43,6 +45,7 @@ export default function AppointmentPage() {
   const [showAppointments, setShowAppointments] = useState(false);
   const [loadingAppointments, setLoadingAppointments] = useState(false);
   const [userEmail, setUserEmail] = useState("");
+  const [activeTab, setActiveTab] = useState("appointments"); // "appointments" or "book"
 
   useEffect(() => {
     checkAuthStatus();
@@ -287,6 +290,43 @@ export default function AppointmentPage() {
     return allSlots.filter(slot => !bookedSlots.includes(slot));
   }
 
+  function handleDateSelect(date) {
+    if (date) {
+      // Use local date to avoid timezone issues
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const dateString = `${year}-${month}-${day}`;
+      setForm(prev => ({ ...prev, appointmentDate: dateString }));
+    }
+  }
+
+  // Convert date string to Date object for DayPicker (using local time to avoid timezone issues)
+  const selectedDateObj = form.appointmentDate ? (() => {
+    const [year, month, day] = form.appointmentDate.split('-').map(Number);
+    return new Date(year, month - 1, day);
+  })() : undefined;
+  
+  // Get disabled dates (Sundays, past dates, beyond 30 days)
+  function getDisabledDates() {
+    const disabled = [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxDate = new Date(today);
+    maxDate.setDate(today.getDate() + 30);
+    
+    // Disable past dates
+    disabled.push({ before: today });
+    
+    // Disable dates beyond 30 days
+    disabled.push({ after: maxDate });
+    
+    // Disable Sundays
+    disabled.push({ dayOfWeek: [0] });
+    
+    return disabled;
+  }
+
   useEffect(() => {
     console.log("useEffect triggered:", { user: !!user, isEmailVerified, userEmail });
     if (user && isEmailVerified && userEmail) {
@@ -322,8 +362,8 @@ export default function AppointmentPage() {
     setError("");
     setLoading(true);
 
-    if (!form.firstName.trim() || !userEmail || !form.appointmentDate || !form.appointmentTime) {
-      setError("Please fill in all required fields (First Name, Date, and Time).");
+    if (!form.firstName.trim() || !userEmail || !form.appointmentDate) {
+      setError("Please fill in all required fields (First Name and Date).");
       setLoading(false);
       return;
     }
@@ -338,7 +378,7 @@ export default function AppointmentPage() {
         comments: form.comments,
         services: JSON.stringify(form.services), // Convert to JSON string
         appointmentDate: form.appointmentDate,
-        appointmentTime: form.appointmentTime,
+        appointmentTime: "", // No time selection needed
         status: "confirmed",
       };
       
@@ -539,19 +579,19 @@ export default function AppointmentPage() {
   // Show appointment form if authenticated and verified
   return (
     <section className="appointment-wrapper">
-      <div className="appointment-card">
-        <div className="appointment-header">
-          <h1 className="card-title">Book an Appointment</h1>
+      <div className="appointment-dashboard">
+        <div className="dashboard-header">
+          <h1 className="dashboard-title">Appointment Dashboard</h1>
           <button onClick={handleSignOut} className="sign-out-btn">Sign Out</button>
         </div>
 
         {error && <div className="error-message">{error}</div>}
         {success && <div className="success-message">{success}</div>}
 
-        {/* Show appointments at the top if any exist */}
-        {appointments.length > 0 && (
-          <div className="appointments-section">
-            <div className="appointments-header">
+        <div className="dashboard-content">
+          {/* My Appointments Section */}
+          <div className="dashboard-section">
+            <div className="section-header">
               <h2>My Appointments</h2>
               <button 
                 onClick={() => {
@@ -565,58 +605,63 @@ export default function AppointmentPage() {
               </button>
             </div>
             
-            <div className="appointments-list">
-              {appointments.map((apt) => {
-                const dateObj = new Date(apt.appointmentDate);
-                const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                  weekday: 'long', 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                });
-                const [hours, minutes] = apt.appointmentTime.split(':');
-                const hour12 = parseInt(hours) % 12 || 12;
-                const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
-                const displayTime = `${hour12}:${minutes} ${ampm}`;
-                
-                return (
-                  <div key={apt.id} className="appointment-item">
-                    <div className="appointment-details">
-                      <h3>{apt.firstName} {apt.lastName}</h3>
-                      <p><strong>Date:</strong> {formattedDate}</p>
-                      <p><strong>Time:</strong> {displayTime}</p>
-                      {apt.makeModel && <p><strong>Vehicle:</strong> {apt.makeModel}</p>}
-                      {(() => {
-                        // Parse services if it's a JSON string, otherwise use as-is
-                        let services = apt.services;
-                        if (typeof services === 'string') {
-                          try {
-                            services = JSON.parse(services);
-                          } catch (e) {
-                            console.error("Error parsing services JSON:", e);
-                            services = null;
+            {loadingAppointments && appointments.length === 0 ? (
+              <p className="loading-message">Loading appointments...</p>
+            ) : appointments.length === 0 ? (
+              <p className="no-appointments">No appointments booked yet.</p>
+            ) : (
+              <div className="appointments-list">
+                {appointments.map((apt) => {
+                  const dateObj = new Date(apt.appointmentDate);
+                  const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  });
+                  return (
+                    <div key={apt.id} className="appointment-item">
+                      <div className="appointment-details">
+                        <h3>{apt.firstName} {apt.lastName}</h3>
+                        <p><strong>Date:</strong> {formattedDate}</p>
+                        {apt.makeModel && <p><strong>Vehicle:</strong> {apt.makeModel}</p>}
+                        {(() => {
+                          // Parse services if it's a JSON string, otherwise use as-is
+                          let services = apt.services;
+                          if (typeof services === 'string') {
+                            try {
+                              services = JSON.parse(services);
+                            } catch (e) {
+                              console.error("Error parsing services JSON:", e);
+                              services = null;
+                            }
                           }
-                        }
-                        return services && Object.keys(services).some(key => services[key]) && (
-                          <p><strong>Services:</strong> {
-                            Object.entries(services)
-                              .filter(([_, value]) => value)
-                              .map(([key, _]) => key.replace(/([A-Z])/g, ' $1').trim())
-                              .join(', ')
-                          }</p>
-                        );
-                      })()}
-                      {apt.comments && <p><strong>Comments:</strong> {apt.comments}</p>}
-                      <p><strong>Status:</strong> <span className={`status-${apt.status}`}>{apt.status}</span></p>
+                          return services && Object.keys(services).some(key => services[key]) && (
+                            <p><strong>Services:</strong> {
+                              Object.entries(services)
+                                .filter(([_, value]) => value)
+                                .map(([key, _]) => key.replace(/([A-Z])/g, ' $1').trim())
+                                .join(', ')
+                            }</p>
+                          );
+                        })()}
+                        {apt.comments && <p><strong>Comments:</strong> {apt.comments}</p>}
+                        <p><strong>Status:</strong> <span className={`status-${apt.status}`}>{apt.status}</span></p>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
-        )}
 
-        <form onSubmit={handleSubmit} className="appointment-form">
+          {/* Book New Appointment Section */}
+          <div className="dashboard-section">
+            <div className="section-header">
+              <h2>Book New Appointment</h2>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="appointment-form">
           <label>
             First Name *
             <input
@@ -650,64 +695,40 @@ export default function AppointmentPage() {
 
           <label>
             Appointment Date *
-            <select
+            <div className="day-picker-wrapper">
+              <DayPicker
+                mode="single"
+                selected={selectedDateObj}
+                onSelect={handleDateSelect}
+                disabled={getDisabledDates()}
+                fromDate={new Date()}
+                toDate={(() => {
+                  const maxDate = new Date();
+                  maxDate.setDate(maxDate.getDate() + 30);
+                  return maxDate;
+                })()}
+                showOutsideDays={false}
+                className="appointment-day-picker"
+              />
+            </div>
+            {form.appointmentDate && (
+              <p className="selected-date-display">
+                Selected: {new Date(form.appointmentDate).toLocaleDateString('en-US', { 
+                  weekday: 'long', 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </p>
+            )}
+            <input
+              type="hidden"
               name="appointmentDate"
               value={form.appointmentDate}
-              onChange={(e) => {
-                handleChange(e);
-                // Reset time when date changes
-                setForm(prev => ({ ...prev, appointmentTime: "" }));
-              }}
-              className="text-input"
               required
-            >
-              <option value="">Select a date</option>
-              {generateAvailableDates().map(date => {
-                const dateObj = new Date(date);
-                const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                  weekday: 'short', 
-                  year: 'numeric', 
-                  month: 'short', 
-                  day: 'numeric' 
-                });
-                return (
-                  <option key={date} value={date}>
-                    {formattedDate}
-                  </option>
-                );
-              })}
-            </select>
+            />
           </label>
 
-          <label>
-            Appointment Time *
-            <select
-              name="appointmentTime"
-              value={form.appointmentTime}
-              onChange={handleChange}
-              className="text-input"
-              required
-              disabled={!form.appointmentDate}
-            >
-              <option value="">
-                {!form.appointmentDate ? "Select a date first" : "Select a time"}
-              </option>
-              {form.appointmentDate && getAvailableTimeSlots(form.appointmentDate).map(time => {
-                const [hours, minutes] = time.split(':');
-                const hour12 = parseInt(hours) % 12 || 12;
-                const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
-                const displayTime = `${hour12}:${minutes} ${ampm}`;
-                return (
-                  <option key={time} value={time}>
-                    {displayTime}
-                  </option>
-                );
-              })}
-            </select>
-            {form.appointmentDate && getAvailableTimeSlots(form.appointmentDate).length === 0 && (
-              <p className="no-slots-message">No available time slots for this date. Please select another date.</p>
-            )}
-          </label>
 
           <div className="services-row">
             <div className="service-item">
@@ -784,37 +805,14 @@ export default function AppointmentPage() {
             />
           </label>
 
-          <div className="submit-row">
-            <button type="submit" className="submit-btn" disabled={loading || submitted}>
-              {loading ? "Booking..." : submitted ? "Booked!" : "Book Appointment"}
-            </button>
+              <div className="submit-row">
+                <button type="submit" className="submit-btn" disabled={loading || submitted}>
+                  {loading ? "Booking..." : submitted ? "Booked!" : "Book Appointment"}
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-
-        {/* Show appointments section at bottom if none exist (for loading/empty states) */}
-        {appointments.length === 0 && (
-          <div className="appointments-section">
-            <div className="appointments-header">
-              <h2>My Appointments</h2>
-              <button 
-                onClick={() => {
-                  console.log("Manual refresh clicked", { user, userEmail, isEmailVerified });
-                  fetchAppointments();
-                }} 
-                className="refresh-btn"
-                disabled={loadingAppointments}
-              >
-                {loadingAppointments ? "Loading..." : "Refresh"}
-              </button>
-            </div>
-            
-            {loadingAppointments ? (
-              <p className="loading-message">Loading appointments...</p>
-            ) : (
-              <p className="no-appointments">No appointments booked yet.</p>
-            )}
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );

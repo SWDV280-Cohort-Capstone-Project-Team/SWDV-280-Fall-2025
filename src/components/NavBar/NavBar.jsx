@@ -71,8 +71,8 @@ export default function NavBar() {
 
         <nav className={`lr-nav ${menuOpen ? 'open' : ''}`}>
           <a href="/" onClick={handleHomeClick}>Home</a>
-          <a href="#Services" onClick={(e) => { e.preventDefault(); scrollToSection('Services'); }}>Services</a>
           <a href="#About" onClick={(e) => { e.preventDefault(); scrollToSection('About'); }}>About</a>
+          <a href="#Services" onClick={(e) => { e.preventDefault(); scrollToSection('Services'); }}>Services</a>
           <a href="#ContactUS" onClick={(e) => { e.preventDefault(); scrollToSection('ContactUS'); }}>Contact</a>
           <Link to="/appointment" onClick={closeMenu}>Appointment</Link>
           <Link to="/login" onClick={closeMenu}>Login</Link>
