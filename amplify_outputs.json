@@ -28,15 +28,15 @@
   "data": {
     "url": "https://a4jwcgxctve4xgpwzon7t6563e.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
-    "default_authorization_type": "AWS_IAM",
+    "default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
     "authorization_types": [
-      "AMAZON_COGNITO_USER_POOLS"
+      "AWS_IAM"
     ],
     "model_introspection": {
       "version": 1,
       "models": {
-        "Todo": {
-          "name": "Todo",
+        "Appointment": {
+          "name": "Appointment",
           "fields": {
             "id": {
               "name": "id",
@@ -45,8 +45,64 @@
               "isRequired": true,
               "attributes": []
             },
-            "content": {
-              "name": "content",
+            "firstName": {
+              "name": "firstName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "lastName": {
+              "name": "lastName",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "email": {
+              "name": "email",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "makeModel": {
+              "name": "makeModel",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "comments": {
+              "name": "comments",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
+            "services": {
+              "name": "services",
+              "isArray": false,
+              "type": "AWSJSON",
+              "isRequired": false,
+              "attributes": []
+            },
+            "appointmentDate": {
+              "name": "appointmentDate",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "appointmentTime": {
+              "name": "appointmentTime",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "status": {
+              "name": "status",
               "isArray": false,
               "type": "String",
               "isRequired": false,
@@ -70,7 +126,7 @@
             }
           },
           "syncable": true,
-          "pluralName": "Todos",
+          "pluralName": "Appointments",
           "attributes": [
             {
               "type": "model",
@@ -81,13 +137,11 @@
               "properties": {
                 "rules": [
                   {
-                    "allow": "public",
-                    "provider": "iam",
+                    "allow": "private",
                     "operations": [
                       "create",
-                      "update",
-                      "delete",
-                      "read"
+                      "read",
+                      "update"
                     ]
                   }
                 ]

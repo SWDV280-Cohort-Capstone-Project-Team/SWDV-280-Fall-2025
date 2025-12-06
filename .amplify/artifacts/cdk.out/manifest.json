@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/628d1e53ea685a1d22629dd3c54e92e292512a1d259ac6c987a7c60c82ed0b87.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/48a26ead117b17d4a3f73df254471b732ba9efa18fed83133f4b7b31fe7b0c76.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -375,524 +375,522 @@
             "data": "amplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource86290833"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/DynamoDBModelTableReadIOPS": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/DynamoDBModelTableReadIOPS": [
           {
             "type": "aws:cdk:logicalId",
             "data": "DynamoDBModelTableReadIOPS"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/DynamoDBModelTableWriteIOPS": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/DynamoDBModelTableWriteIOPS": [
           {
             "type": "aws:cdk:logicalId",
             "data": "DynamoDBModelTableWriteIOPS"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/DynamoDBBillingMode": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/DynamoDBBillingMode": [
           {
             "type": "aws:cdk:logicalId",
             "data": "DynamoDBBillingMode"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/DynamoDBEnablePointInTimeRecovery": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/DynamoDBEnablePointInTimeRecovery": [
           {
             "type": "aws:cdk:logicalId",
             "data": "DynamoDBEnablePointInTimeRecovery"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/DynamoDBEnableServerSideEncryption": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/DynamoDBEnableServerSideEncryption": [
           {
             "type": "aws:cdk:logicalId",
             "data": "DynamoDBEnableServerSideEncryption"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/HasEnvironmentParameter": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/HasEnvironmentParameter": [
           {
             "type": "aws:cdk:logicalId",
             "data": "HasEnvironmentParameter"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/ShouldUsePayPerRequestBilling": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/ShouldUsePayPerRequestBilling": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ShouldUsePayPerRequestBilling"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/ShouldUsePointInTimeRecovery": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/ShouldUsePointInTimeRecovery": [
           {
             "type": "aws:cdk:logicalId",
             "data": "ShouldUsePointInTimeRecovery"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/TodoTable": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/AppointmentTable": [
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Todo"
+            "data": "Appointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/TodoTable/Default/Default": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/AppointmentTable/Default/Default": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "TodoTable"
+            "data": "AppointmentTable"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Todo"
+            "data": "Appointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/CustomTableTodoTable": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/CustomTableAppointmentTable": [
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Todo"
+            "data": "Appointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/GetAttTodoTableStreamArn": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/GetAttAppointmentTableStreamArn": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "GetAttTodoTableStreamArn"
+            "data": "GetAttAppointmentTableStreamArn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/GetAttTodoTableName": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/GetAttAppointmentTableName": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "GetAttTodoTableName"
+            "data": "GetAttAppointmentTableName"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/TodoIAMRole": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/AppointmentIAMRole": [
           {
             "type": "graphqltransformer:resourceName",
-            "data": "TodoIAMRole"
+            "data": "AppointmentIAMRole"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/TodoIAMRole/Resource": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/AppointmentIAMRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "TodoIAMRole2DA8E66E"
+            "data": "AppointmentIAMRoleC35F7722"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "TodoIAMRole"
+            "data": "AppointmentIAMRole"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/TodoDataSource": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/AppointmentDataSource": [
           {
             "type": "graphqltransformer:resourceName",
-            "data": "TodoTable"
+            "data": "AppointmentTable"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/TodoDataSource/Resource": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/AppointmentDataSource/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "TodoDataSource"
+            "data": "AppointmentDataSource"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "TodoTable"
+            "data": "AppointmentTable"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/QuerygetTodoauth0Function/QuerygetTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/QuerygetAppointmentauth0Function/QuerygetAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "QuerygetTodoauth0FunctionQuerygetTodoauth0FunctionAppSyncFunction846D8436"
+            "data": "QuerygetAppointmentauth0FunctionQuerygetAppointmentauth0FunctionAppSyncFunctionCA69404A"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "QuerygetTodoauth0Function"
+            "data": "QuerygetAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/QuerygetTodopostAuth0Function/QuerygetTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/QuerygetAppointmentpostAuth0Function/QuerygetAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "QuerygetTodopostAuth0FunctionQuerygetTodopostAuth0FunctionAppSyncFunction6BE14593"
+            "data": "QuerygetAppointmentpostAuth0FunctionQuerygetAppointmentpostAuth0FunctionAppSyncFunction9DE766A3"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "QuerygetTodopostAuth0Function"
+            "data": "QuerygetAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/QueryGetTodoDataResolverFn/QueryGetTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/QueryGetAppointmentDataResolverFn/QueryGetAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "QueryGetTodoDataResolverFnQueryGetTodoDataResolverFnAppSyncFunctionE2B57DAD"
+            "data": "QueryGetAppointmentDataResolverFnQueryGetAppointmentDataResolverFnAppSyncFunction0BA0960B"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "QueryGetTodoDataResolverFn"
+            "data": "QueryGetAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/queryGetTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/queryGetAppointmentResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "GetTodoResolver"
+            "data": "GetAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Query.getTodo"
+            "data": "Query.getAppointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/QuerylistTodosauth0Function/QuerylistTodosauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/QuerylistAppointmentsauth0Function/QuerylistAppointmentsauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "QuerylistTodosauth0FunctionQuerylistTodosauth0FunctionAppSyncFunction7D761961"
+            "data": "QuerylistAppointmentsauth0FunctionQuerylistAppointmentsauth0FunctionAppSyncFunction75A441EF"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "QuerylistTodosauth0Function"
+            "data": "QuerylistAppointmentsauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/QuerylistTodospostAuth0Function/QuerylistTodospostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/QuerylistAppointmentspostAuth0Function/QuerylistAppointmentspostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "QuerylistTodospostAuth0FunctionQuerylistTodospostAuth0FunctionAppSyncFunction154D8577"
+            "data": "QuerylistAppointmentspostAuth0FunctionQuerylistAppointmentspostAuth0FunctionAppSyncFunction38D90138"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "QuerylistTodospostAuth0Function"
+            "data": "QuerylistAppointmentspostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/QueryListTodosDataResolverFn/QueryListTodosDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/QueryListAppointmentsDataResolverFn/QueryListAppointmentsDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "QueryListTodosDataResolverFnQueryListTodosDataResolverFnAppSyncFunctionF825FE47"
+            "data": "QueryListAppointmentsDataResolverFnQueryListAppointmentsDataResolverFnAppSyncFunction1CD1AD63"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "QueryListTodosDataResolverFn"
+            "data": "QueryListAppointmentsDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/queryListTodosResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/queryListAppointmentsResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "ListTodoResolver"
+            "data": "ListAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Query.listTodos"
+            "data": "Query.listAppointments"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationcreateTodoinit0Function/MutationcreateTodoinit0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationcreateAppointmentinit0Function/MutationcreateAppointmentinit0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationcreateTodoinit0FunctionMutationcreateTodoinit0FunctionAppSyncFunction54DE5B8B"
+            "data": "MutationcreateAppointmentinit0FunctionMutationcreateAppointmentinit0FunctionAppSyncFunction06CD0EE6"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationcreateTodoinit0Function"
+            "data": "MutationcreateAppointmentinit0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationcreateTodoauth0Function/MutationcreateTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationcreateAppointmentinit1Function/MutationcreateAppointmentinit1Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationcreateTodoauth0FunctionMutationcreateTodoauth0FunctionAppSyncFunction21817E36"
+            "data": "MutationcreateAppointmentinit1FunctionMutationcreateAppointmentinit1FunctionAppSyncFunction05CD4BFE"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationcreateTodoauth0Function"
+            "data": "MutationcreateAppointmentinit1Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationcreateTodopostAuth0Function/MutationcreateTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationcreateAppointmentauth0Function/MutationcreateAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationcreateTodopostAuth0FunctionMutationcreateTodopostAuth0FunctionAppSyncFunctionED59EB9F"
+            "data": "MutationcreateAppointmentauth0FunctionMutationcreateAppointmentauth0FunctionAppSyncFunction7EE07719"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationcreateTodopostAuth0Function"
+            "data": "MutationcreateAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationCreateTodoDataResolverFn/MutationCreateTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationcreateAppointmentpostAuth0Function/MutationcreateAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationCreateTodoDataResolverFnMutationCreateTodoDataResolverFnAppSyncFunction900EC5CF"
+            "data": "MutationcreateAppointmentpostAuth0FunctionMutationcreateAppointmentpostAuth0FunctionAppSyncFunction098FBE24"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationCreateTodoDataResolverFn"
+            "data": "MutationcreateAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/mutationCreateTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationCreateAppointmentDataResolverFn/MutationCreateAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "CreateTodoResolver"
+            "data": "MutationCreateAppointmentDataResolverFnMutationCreateAppointmentDataResolverFnAppSyncFunction2E414CFD"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Mutation.createTodo"
+            "data": "MutationCreateAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationupdateTodoinit0Function/MutationupdateTodoinit0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/mutationCreateAppointmentResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationupdateTodoinit0FunctionMutationupdateTodoinit0FunctionAppSyncFunction1B95BB19"
+            "data": "CreateAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationupdateTodoinit0Function"
+            "data": "Mutation.createAppointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationupdateTodoauth0Function/MutationupdateTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationupdateAppointmentinit0Function/MutationupdateAppointmentinit0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationupdateTodoauth0FunctionMutationupdateTodoauth0FunctionAppSyncFunction1E4A3112"
+            "data": "MutationupdateAppointmentinit0FunctionMutationupdateAppointmentinit0FunctionAppSyncFunctionEFD32C5C"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationupdateTodoauth0Function"
+            "data": "MutationupdateAppointmentinit0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationupdateTodopostAuth0Function/MutationupdateTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationupdateAppointmentauth0Function/MutationupdateAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationupdateTodopostAuth0FunctionMutationupdateTodopostAuth0FunctionAppSyncFunction50C507D7"
+            "data": "MutationupdateAppointmentauth0FunctionMutationupdateAppointmentauth0FunctionAppSyncFunctionE8A8A715"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationupdateTodopostAuth0Function"
+            "data": "MutationupdateAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationUpdateTodoDataResolverFn/MutationUpdateTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationupdateAppointmentpostAuth0Function/MutationupdateAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationUpdateTodoDataResolverFnMutationUpdateTodoDataResolverFnAppSyncFunctionBC238C49"
+            "data": "MutationupdateAppointmentpostAuth0FunctionMutationupdateAppointmentpostAuth0FunctionAppSyncFunction5092D70B"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationUpdateTodoDataResolverFn"
+            "data": "MutationupdateAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/mutationUpdateTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationUpdateAppointmentDataResolverFn/MutationUpdateAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "UpdateTodoResolver"
+            "data": "MutationUpdateAppointmentDataResolverFnMutationUpdateAppointmentDataResolverFnAppSyncFunction0CC05D8F"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Mutation.updateTodo"
+            "data": "MutationUpdateAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationdeleteTodoauth0Function/MutationdeleteTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/mutationUpdateAppointmentResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationdeleteTodoauth0FunctionMutationdeleteTodoauth0FunctionAppSyncFunctionC82C218C"
+            "data": "UpdateAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationdeleteTodoauth0Function"
+            "data": "Mutation.updateAppointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationdeleteTodopostAuth0Function/MutationdeleteTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationdeleteAppointmentauth0Function/MutationdeleteAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationdeleteTodopostAuth0FunctionMutationdeleteTodopostAuth0FunctionAppSyncFunction483271A2"
+            "data": "MutationdeleteAppointmentauth0FunctionMutationdeleteAppointmentauth0FunctionAppSyncFunction0C7AB3D3"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationdeleteTodopostAuth0Function"
+            "data": "MutationdeleteAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/MutationDeleteTodoDataResolverFn/MutationDeleteTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationdeleteAppointmentpostAuth0Function/MutationdeleteAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MutationDeleteTodoDataResolverFnMutationDeleteTodoDataResolverFnAppSyncFunction3879153F"
+            "data": "MutationdeleteAppointmentpostAuth0FunctionMutationdeleteAppointmentpostAuth0FunctionAppSyncFunctionE85FAACB"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "MutationDeleteTodoDataResolverFn"
+            "data": "MutationdeleteAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/mutationDeleteTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/MutationDeleteAppointmentDataResolverFn/MutationDeleteAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "DeleteTodoResolver"
+            "data": "MutationDeleteAppointmentDataResolverFnMutationDeleteAppointmentDataResolverFnAppSyncFunction084DEA51"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Mutation.deleteTodo"
+            "data": "MutationDeleteAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptiononCreateTodoauth0Function/SubscriptiononCreateTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/mutationDeleteAppointmentResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononCreateTodoauth0FunctionSubscriptiononCreateTodoauth0FunctionAppSyncFunction042EF9E1"
+            "data": "DeleteAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptiononCreateTodoauth0Function"
+            "data": "Mutation.deleteAppointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptiononCreateTodopostAuth0Function/SubscriptiononCreateTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptiononCreateAppointmentauth0Function/SubscriptiononCreateAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononCreateTodopostAuth0FunctionSubscriptiononCreateTodopostAuth0FunctionAppSyncFunction18E34C4E"
+            "data": "SubscriptiononCreateAppointmentauth0FunctionSubscriptiononCreateAppointmentauth0FunctionAppSyncFunction61B57CBB"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptiononCreateTodopostAuth0Function"
+            "data": "SubscriptiononCreateAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptionOnCreateTodoDataResolverFn/SubscriptionOnCreateTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptiononCreateAppointmentpostAuth0Function/SubscriptiononCreateAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptionOnCreateTodoDataResolverFnSubscriptionOnCreateTodoDataResolverFnAppSyncFunction462A70C9"
+            "data": "SubscriptiononCreateAppointmentpostAuth0FunctionSubscriptiononCreateAppointmentpostAuth0FunctionAppSyncFunctionE1742C98"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptionOnCreateTodoDataResolverFn"
+            "data": "SubscriptiononCreateAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/subscriptionOnCreateTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptionOnCreateAppointmentDataResolverFn/SubscriptionOnCreateAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononCreateTodoResolver"
+            "data": "SubscriptionOnCreateAppointmentDataResolverFnSubscriptionOnCreateAppointmentDataResolverFnAppSyncFunction9169F9C4"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Subscription.onCreateTodo"
+            "data": "SubscriptionOnCreateAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptiononUpdateTodoauth0Function/SubscriptiononUpdateTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/subscriptionOnCreateAppointmentResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononUpdateTodoauth0FunctionSubscriptiononUpdateTodoauth0FunctionAppSyncFunction80D0DFA3"
+            "data": "SubscriptiononCreateAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptiononUpdateTodoauth0Function"
+            "data": "Subscription.onCreateAppointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptiononUpdateTodopostAuth0Function/SubscriptiononUpdateTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptiononUpdateAppointmentauth0Function/SubscriptiononUpdateAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononUpdateTodopostAuth0FunctionSubscriptiononUpdateTodopostAuth0FunctionAppSyncFunction04445BC7"
+            "data": "SubscriptiononUpdateAppointmentauth0FunctionSubscriptiononUpdateAppointmentauth0FunctionAppSyncFunction825576F4"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptiononUpdateTodopostAuth0Function"
+            "data": "SubscriptiononUpdateAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptionOnUpdateTodoDataResolverFn/SubscriptionOnUpdateTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptiononUpdateAppointmentpostAuth0Function/SubscriptiononUpdateAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptionOnUpdateTodoDataResolverFnSubscriptionOnUpdateTodoDataResolverFnAppSyncFunction523DF0E4"
+            "data": "SubscriptiononUpdateAppointmentpostAuth0FunctionSubscriptiononUpdateAppointmentpostAuth0FunctionAppSyncFunctionF970CC75"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptionOnUpdateTodoDataResolverFn"
+            "data": "SubscriptiononUpdateAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/subscriptionOnUpdateTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptionOnUpdateAppointmentDataResolverFn/SubscriptionOnUpdateAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononUpdateTodoResolver"
+            "data": "SubscriptionOnUpdateAppointmentDataResolverFnSubscriptionOnUpdateAppointmentDataResolverFnAppSyncFunctionE5294A60"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Subscription.onUpdateTodo"
+            "data": "SubscriptionOnUpdateAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptiononDeleteTodoauth0Function/SubscriptiononDeleteTodoauth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/subscriptionOnUpdateAppointmentResolver": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononDeleteTodoauth0FunctionSubscriptiononDeleteTodoauth0FunctionAppSyncFunctionF69F2220"
+            "data": "SubscriptiononUpdateAppointmentResolver"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptiononDeleteTodoauth0Function"
+            "data": "Subscription.onUpdateAppointment"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptiononDeleteTodopostAuth0Function/SubscriptiononDeleteTodopostAuth0Function.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptiononDeleteAppointmentauth0Function/SubscriptiononDeleteAppointmentauth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononDeleteTodopostAuth0FunctionSubscriptiononDeleteTodopostAuth0FunctionAppSyncFunctionE131CBE7"
+            "data": "SubscriptiononDeleteAppointmentauth0FunctionSubscriptiononDeleteAppointmentauth0FunctionAppSyncFunctionBFFE9440"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptiononDeleteTodopostAuth0Function"
+            "data": "SubscriptiononDeleteAppointmentauth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/SubscriptionOnDeleteTodoDataResolverFn/SubscriptionOnDeleteTodoDataResolverFn.AppSyncFunction": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptiononDeleteAppointmentpostAuth0Function/SubscriptiononDeleteAppointmentpostAuth0Function.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptionOnDeleteTodoDataResolverFnSubscriptionOnDeleteTodoDataResolverFnAppSyncFunction3E641E8C"
+            "data": "SubscriptiononDeleteAppointmentpostAuth0FunctionSubscriptiononDeleteAppointmentpostAuth0FunctionAppSyncFunction9028B716"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "SubscriptionOnDeleteTodoDataResolverFn"
+            "data": "SubscriptiononDeleteAppointmentpostAuth0Function"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/subscriptionOnDeleteTodoResolver": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/SubscriptionOnDeleteAppointmentDataResolverFn/SubscriptionOnDeleteAppointmentDataResolverFn.AppSyncFunction": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "SubscriptiononDeleteTodoResolver"
+            "data": "SubscriptionOnDeleteAppointmentDataResolverFnSubscriptionOnDeleteAppointmentDataResolverFnAppSyncFunction06000094"
           },
           {
             "type": "graphqltransformer:resourceName",
-            "data": "Subscription.onDeleteTodo"
+            "data": "SubscriptionOnDeleteAppointmentDataResolverFn"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/CDKMetadata/Default": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/subscriptionOnDeleteAppointmentResolver": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptiononDeleteAppointmentResolver"
+          },
+          {
+            "type": "graphqltransformer:resourceName",
+            "data": "Subscription.onDeleteAppointment"
+          }
+        ],
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/CDKMetadata/Condition": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/CDKMetadata/Condition": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadataAvailable"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource9E37A119Outputs.amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEvent61B4B5B7Arn": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource9E37A119Outputs.amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataAmplifyTableManagerTableManagerCustomProviderframeworkonEvent61B4B5B7Arn": [
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResource9E37A119Outputsamplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataAmplifyTableManagerTableMana770F111B"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPIC4FF9C19ApiId": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPIC4FF9C19ApiId": [
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPIC4FF9C19ApiId"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPINONEDS12E3001EName": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPINONEDS12E3001EName": [
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPINONEDS12E3001EName"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputs.amplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthauthenticatedUserRole3528C7A3Ref": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputs.amplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthauthenticatedUserRole3528C7A3Ref": [
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputsamplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthauthenticatedUserRole3528C7A3Ref"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputs.amplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthunauthenticatedUserRole570430ECRef": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputs.amplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthunauthenticatedUserRole570430ECRef": [
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputsamplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthunauthenticatedUserRole570430ECRef"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputs.amplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthIdentityPoolDAA3D2BARef": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment/reference-to-amplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputs.amplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthIdentityPoolDAA3D2BARef": [
           {
             "type": "aws:cdk:logicalId",
             "data": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputsamplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthIdentityPoolDAA3D2BARef"
           }
         ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Todo.NestedStack/Todo.NestedStackResource": [
+        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/Appointment.NestedStack/Appointment.NestedStackResource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "amplifyDataTodoNestedStackTodoNestedStackResource551CEA56"
-          }
-        ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/AuthRolePolicy01/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "amplifyDataAuthRolePolicy01567A5654"
-          }
-        ],
-        "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/UnauthRolePolicy01/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "amplifyDataUnauthRolePolicy01355B9DCF"
+            "data": "amplifyDataAppointmentNestedStackAppointmentNestedStackResource2E70CEE8"
           }
         ],
         "/amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/AmplifyCodegenAssets/AmplifyCodegenAssetsBucket/Resource": [

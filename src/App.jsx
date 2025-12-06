@@ -10,6 +10,7 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
 import Testimonials from "./components/Testimonials/Testimonials";
 import AppointmentSection from "./components/AppointmentSection/AppointmentSection";
+import AppointmentPage from "./components/pages/AppointmentPage";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -27,14 +28,6 @@ function Home() {
         <Testimonials />
       </main>
       <Footer />
-    </>
-  );
-}
-
-function AppointmentPage() {
-  return (
-    <>
-      <AppointmentSection />
     </>
   );
 }

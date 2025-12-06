@@ -18,8 +18,8 @@
     "AutoVerifiedAttributes": [
      "email"
     ],
-    "EmailVerificationMessage": "The verification code to your new account is {####}",
-    "EmailVerificationSubject": "Verify your new account",
+    "EmailVerificationMessage": "Your verification code is: {####}. Use this code to verify your email and book appointments.",
+    "EmailVerificationSubject": "Verify your email for appointment booking",
     "Policies": {
      "PasswordPolicy": {
       "MinimumLength": 8,
@@ -55,8 +55,8 @@
     },
     "VerificationMessageTemplate": {
      "DefaultEmailOption": "CONFIRM_WITH_CODE",
-     "EmailMessage": "The verification code to your new account is {####}",
-     "EmailSubject": "Verify your new account",
+     "EmailMessage": "Your verification code is: {####}. Use this code to verify your email and book appointments.",
+     "EmailSubject": "Verify your email for appointment booking",
      "SmsMessage": "The verification code to your new account is {####}"
     }
    },
