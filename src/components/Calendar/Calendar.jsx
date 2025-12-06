@@ -10,18 +10,25 @@ export default function Calendar({
   maxDate,
   disabledDates = []
 }) {
-  // Convert date string to Date object for DayPicker
-  const selectedDateObj = selectedDate ? new Date(selectedDate) : undefined;
+  // Helper function to parse date string in local time (avoid timezone issues)
+  const parseLocalDate = (dateString) => {
+    if (!dateString) return undefined;
+    const [year, month, day] = dateString.split('-').map(Number);
+    return new Date(year, month - 1, day);
+  };
+
+  // Convert date string to Date object for DayPicker (using local time)
+  const selectedDateObj = selectedDate ? parseLocalDate(selectedDate) : undefined;
 
   // Build disabled dates array
   const disabled = [
     ...disabledDates,
     // Disable past dates if minDate not provided
     ...(minDate ? [] : [{ before: new Date() }]),
-    // Disable dates before minDate
-    ...(minDate ? [{ before: new Date(minDate) }] : []),
-    // Disable dates after maxDate
-    ...(maxDate ? [{ after: new Date(maxDate) }] : []),
+    // Disable dates before minDate (parse in local time)
+    ...(minDate ? [{ before: parseLocalDate(minDate) }] : []),
+    // Disable dates after maxDate (parse in local time)
+    ...(maxDate ? [{ after: parseLocalDate(maxDate) }] : []),
   ];
 
   const handleDateSelect = (date) => {
@@ -42,8 +49,8 @@ export default function Calendar({
         selected={selectedDateObj}
         onSelect={handleDateSelect}
         disabled={disabled}
-        fromDate={minDate ? new Date(minDate) : new Date()}
-        toDate={maxDate ? new Date(maxDate) : undefined}
+        fromDate={minDate ? parseLocalDate(minDate) : new Date()}
+        toDate={maxDate ? parseLocalDate(maxDate) : undefined}
         showOutsideDays={false}
         className="appointment-calendar"
       />

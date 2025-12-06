@@ -300,8 +300,8 @@ export default function AppointmentPage() {
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + 30);
   
-  // Disable Sundays
-  const disabledDates = [{ dayOfWeek: [0] }];
+  // Disable Sundays and Saturdays
+  const disabledDates = [{ dayOfWeek: [0, 6] }];
 
   useEffect(() => {
     console.log("useEffect triggered:", { user: !!user, isEmailVerified, userEmail });

@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-/* DayPicker custom styles */
+/* DayPicker custom styles - Override all default styles */
 .appointment-calendar {
   --rdp-cell-size: 40px;
   --rdp-accent-color: #234e4d;
@@ -16,52 +16,181 @@
   border: 1px solid #c7dce0;
   border-radius: 8px;
   padding: 15px;
-  background-color: #fff;
+  background-color: #fff !important;
+  color: #234e4d !important;
+  font-family: inherit;
 }
 
-.appointment-calendar .rdp-day_selected,
-.appointment-calendar .rdp-day_selected:focus-visible,
-.appointment-calendar .rdp-day_selected:hover {
-  background-color: #234e4d;
-  color: #fff;
+/* Month container */
+.appointment-calendar .rdp-month {
+  margin: 0;
+  color: #234e4d !important;
+}
+
+/* Caption (Month/Year header) */
+.appointment-calendar .rdp-caption {
+  color: #234e4d !important;
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appointment-calendar .rdp-caption_label {
+  color: #234e4d !important;
+  font-weight: 600;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Navigation buttons */
+.appointment-calendar .rdp-button {
+  color: #234e4d !important;
+  background-color: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.appointment-calendar .rdp-button:hover:not([disabled]) {
+  background-color: #8dbbb7 !important;
+  color: #fff !important;
+}
+
+.appointment-calendar .rdp-button:focus-visible {
+  outline: 2px solid #8dbbb7;
+  outline-offset: 2px;
+}
+
+.appointment-calendar .rdp-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #999 !important;
+}
+
+.appointment-calendar .rdp-nav {
+  display: flex;
+  gap: 5px;
+}
+
+.appointment-calendar .rdp-nav_button {
+  color: #234e4d !important;
+  background-color: transparent !important;
+}
+
+.appointment-calendar .rdp-nav_button:hover:not([disabled]) {
+  background-color: #8dbbb7 !important;
+  color: #fff !important;
+}
+
+.appointment-calendar .rdp-nav_button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #999 !important;
+}
+
+/* Weekday headers */
+.appointment-calendar .rdp-head_cell {
+  color: #234e4d !important;
+  font-weight: 600;
+  font-size: 0.9em;
+  padding: 5px;
+  background-color: transparent !important;
+}
+
+/* Day cells - Base styles */
+.appointment-calendar .rdp-day {
+  color: #234e4d !important;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 .appointment-calendar .rdp-day:hover:not([aria-disabled]) {
-  background-color: #8dbbb7;
-  color: #fff;
+  background-color: #8dbbb7 !important;
+  color: #fff !important;
 }
 
+/* Selected day */
+.appointment-calendar .rdp-day_selected,
+.appointment-calendar .rdp-day_selected:focus-visible,
+.appointment-calendar .rdp-day_selected:hover {
+  background-color: #234e4d !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* Today indicator */
+.appointment-calendar .rdp-day_today {
+  font-weight: 700;
+  border: 2px solid #234e4d !important;
+  background-color: #f8f2db !important;
+  color: #234e4d !important;
+}
+
+.appointment-calendar .rdp-day_today:not(.rdp-day_selected) {
+  background-color: #f8f2db !important;
+  color: #234e4d !important;
+}
+
+.appointment-calendar .rdp-day_today.rdp-day_selected {
+  background-color: #234e4d !important;
+  color: #fff !important;
+  border-color: #234e4d !important;
+}
+
+/* Disabled days */
 .appointment-calendar .rdp-day[aria-disabled="true"] {
   opacity: 0.5;
   cursor: not-allowed;
+  color: #999 !important;
+  background-color: #e8e8e8 !important;
 }
 
-.appointment-calendar .rdp-month {
-  margin: 0;
+.appointment-calendar .rdp-day[aria-disabled="true"]:hover {
+  background-color: #e8e8e8 !important;
+  color: #999 !important;
 }
 
-.appointment-calendar .rdp-caption {
-  color: #234e4d;
-  font-weight: 600;
+/* Focus styles */
+.appointment-calendar .rdp-day:focus-visible {
+  outline: 2px solid #8dbbb7;
+  outline-offset: 2px;
 }
 
-.appointment-calendar .rdp-head_cell {
-  color: #234e4d;
-  font-weight: 600;
+/* Table and grid elements */
+.appointment-calendar table {
+  color: #234e4d !important;
+  background-color: transparent !important;
 }
 
-.appointment-calendar .rdp-day {
-  color: #234e4d;
-  font-weight: 500;
+.appointment-calendar .rdp-table {
+  color: #234e4d !important;
+}
+
+.appointment-calendar .rdp-tbody {
+  color: #234e4d !important;
+}
+
+.appointment-calendar .rdp-tbody tr {
+  color: #234e4d !important;
+}
+
+.appointment-calendar .rdp-tbody td {
+  color: #234e4d !important;
+  background-color: transparent !important;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .appointment-calendar {
     padding: 10px;
-  }
-  
-  .appointment-calendar {
     --rdp-cell-size: 35px;
   }
 }
