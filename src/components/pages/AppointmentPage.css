@@ -382,6 +382,12 @@ select.text-input {
   margin-top: 6px;
 }
 
+/* Ensure container hover doesn't affect button borders */
+.time-slots-container:hover .time-slot:not(.hovered) {
+  border-color: #c7dce0;
+}
+
+
 .time-slot {
   padding: 10px 15px;
   border: 2px solid #c7dce0;
@@ -393,14 +399,31 @@ select.text-input {
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
+  position: relative;
 }
 
-.time-slot:hover:not(:disabled) {
+/* Prevent any hover effects except when explicitly hovered via React state */
+.time-slot:not(.hovered) {
+  border-color: #c7dce0;
+}
+
+/* Only apply hover to enabled, available buttons using React state */
+.time-slot.hovered:not(.unavailable):not(:disabled) {
   background-color: #8dbbb7;
   color: #fff;
   border-color: #8dbbb7;
   transform: translateY(-2px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent focus outline from appearing like a border */
+.time-slot:focus {
+  outline: none;
+}
+
+.time-slot:focus-visible {
+  outline: 2px solid #8dbbb7;
+  outline-offset: 2px;
 }
 
 .time-slot.selected {
@@ -410,17 +433,15 @@ select.text-input {
   box-shadow: 0 2px 8px rgba(35, 78, 77, 0.3);
 }
 
-.time-slot.unavailable {
+.time-slot.unavailable,
+.time-slot:disabled {
   background-color: #e8e8e8;
   color: #999;
   border-color: #d0d0d0;
   cursor: not-allowed;
   opacity: 0.6;
   text-decoration: line-through;
-}
-
-.time-slot:disabled {
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .selected-date-display {
@@ -434,42 +455,6 @@ select.text-input {
   text-align: center;
 }
 
-/* DayPicker wrapper and custom styles */
-.day-picker-wrapper {
-  margin-top: 6px;
-  display: flex;
-  justify-content: center;
-}
-
-.appointment-day-picker {
-  --rdp-cell-size: 40px;
-  --rdp-accent-color: #234e4d;
-  --rdp-background-color: #f8f2db;
-  --rdp-accent-color-dark: #8dbbb7;
-  --rdp-outline: 2px solid var(--rdp-accent-color);
-  --rdp-outline-selected: 2px solid var(--rdp-accent-color);
-  border: 1px solid #c7dce0;
-  border-radius: 8px;
-  padding: 15px;
-  background-color: #fff;
-}
-
-.appointment-day-picker .rdp-day_selected,
-.appointment-day-picker .rdp-day_selected:focus-visible,
-.appointment-day-picker .rdp-day_selected:hover {
-  background-color: #234e4d;
-  color: #fff;
-}
-
-.appointment-day-picker .rdp-day:hover:not([aria-disabled]) {
-  background-color: #8dbbb7;
-  color: #fff;
-}
-
-.appointment-day-picker .rdp-day[aria-disabled="true"] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
 
 /* responsive */
 @media (max-width: 768px) {
