@@ -6,18 +6,10 @@
    "Properties": {
     "AdditionalAuthenticationProviders": [
      {
-      "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
-      "UserPoolConfig": {
-       "AwsRegion": {
-        "Ref": "AWS::Region"
-       },
-       "UserPoolId": {
-        "Ref": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputsamplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthUserPool1AE8B051Ref"
-       }
-      }
+      "AuthenticationType": "AWS_IAM"
      }
     ],
-    "AuthenticationType": "AWS_IAM",
+    "AuthenticationType": "AMAZON_COGNITO_USER_POOLS",
     "Name": "amplifyData",
     "Tags": [
      {
@@ -32,7 +24,16 @@
       "Key": "created-by",
       "Value": "amplify"
      }
-    ]
+    ],
+    "UserPoolConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "DefaultAction": "ALLOW",
+     "UserPoolId": {
+      "Ref": "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputsamplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthUserPool1AE8B051Ref"
+     }
+    }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
@@ -50,7 +51,7 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6967904c91df9ddb505c753b89b43629d1972a0b96231a3709af4afe646352e8.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fda17c1fe0f928a047293a073f8e0f83a259e16d63f41f3528d171c9315e807c.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",

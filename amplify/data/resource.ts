@@ -23,9 +23,8 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    // Primary authentication: AWS_IAM (for identity pool authentication)
-    // Additional authentication: AMAZON_COGNITO_USER_POOLS (automatically available when auth resource is defined)
-    defaultAuthorizationMode: 'iam',
+    // Primary authentication: AMAZON_COGNITO_USER_POOLS (for Cognito User Pools authentication)
+    defaultAuthorizationMode: 'userPool',
   },
 });
 
