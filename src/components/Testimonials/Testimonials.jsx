@@ -10,11 +10,11 @@ import gwenSanta from '../../assets/images/Testimonials3.jpg';
 
 const TESTIMONIAL_DATA = [
   // ... (Your TESTIMONIAL_DATA array) ...
-  { id: 1, image: samWise, name: 'Sam Wise', rating: 5, text: 'Mauris id purus non odio elementum luctus non quis diam. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 2, image: daveMill, name: 'Dave Mill', rating: 5, text: 'Nulla vitae diam bibendum, efficitur sem ac, egestas urna. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 3, image: gwenSanta, name: 'Gwen Santa', rating: 5, text: 'Nulla vitae diam bibendum, efficitur sem ac, egestas urna. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 4, image: samWise, name: 'Sam Wise', rating: 5, text: 'Mauris id purus non odio elementum luctus non quis diam. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 5, image: daveMill, name: 'Dave Mill', rating: 5, text: 'Nulla vitae diam bibendum, efficitur sem ac, egestas urna. Cras vitae magna vitae ipsum imperdiet volutpat.' },
+  { id: 1, image: samWise, name: 'Sam Wise', rating: 5, text: "I won't go anywhere else! The team at Otterly Reliable diagnosed my complex electrical issue when three other shops couldn't. Technical expertise is top-notch, and the repair was done perfectly" },
+  { id: 2, image: daveMill, name: 'Dave Mill', rating: 5, text: "The service was incredibly fast. I was expecting to leave my car all day for an oil change and tire rotation, but they got me in and out in less than an hour. Truly reliable and efficient!" },
+  { id: 3, image: gwenSanta, name: 'Gwen Santa', rating: 5, text: "Genuinely great customer service. They showed me exactly what was wrong with my brakes and gave me a fair quote with zero pressure. Their honesty builds trust. 5 stars all the way." },
+  { id: 4, image: samWise, name: 'Sam Wise', rating: 5, text: "I used their pre-purchase inspection service, and it saved me thousands by flagging hidden transmission issues. The report was detailed and thorough. They stand behind their work." },
+  { id: 5, image: daveMill, name: 'Dave Mill', rating: 5, text:"Fantastic experience from booking the appointment to picking up the car. They kept me updated via text and even washed my car! Above and beyond service every time. iam for sure caming back" },
 ];
 
 const renderRating = (rating) => {
