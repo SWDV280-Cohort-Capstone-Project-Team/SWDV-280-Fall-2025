@@ -10,12 +10,11 @@ import gwenSanta from '../../assets/images/Testimonials3.jpg';
 
 
 const TESTIMONIAL_DATA = [
-  // ... (Your TESTIMONIAL_DATA array) ...
-  { id: 1, image: samWise, name: 'Sam Wise', rating: 5, text: 'Mauris id purus non odio elementum luctus non quis diam. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 2, image: daveMill, name: 'Dave Mill', rating: 5, text: 'Nulla vitae diam bibendum, efficitur sem ac, egestas urna. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 3, image: gwenSanta, name: 'Gwen Santa', rating: 5, text: 'Nulla vitae diam bibendum, efficitur sem ac, egestas urna. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 4, image: samWise, name: 'Sam Wise', rating: 5, text: 'Mauris id purus non odio elementum luctus non quis diam. Cras vitae magna vitae ipsum imperdiet volutpat.' },
-  { id: 5, image: daveMill, name: 'Dave Mill', rating: 5, text: 'Nulla vitae diam bibendum, efficitur sem ac, egestas urna. Cras vitae magna vitae ipsum imperdiet volutpat.' },
+  { id: 1, image: samWise, name: 'Sam Wise', rating: 5, text: 'I brought my truck in for a transmission issue and they had it diagnosed and fixed within two days. The staff was professional, kept me updated throughout the process, and the pricing was fair. Highly recommend!' },
+  { id: 2, image: daveMill, name: 'Dave Mill', rating: 5, text: 'These guys saved me when my engine started making strange noises. They explained everything clearly, showed me what was wrong, and got me back on the road quickly. Great service and honest mechanics.' },
+  { id: 3, image: gwenSanta, name: 'Gwen Santa', rating: 5, text: 'I\'ve been coming here for years for all my car maintenance needs. They always do quality work, never try to upsell unnecessary services, and treat my vehicle with care. Trustworthy and reliable!' },
+  { id: 4, image: samWise, name: 'Sam Wise', rating: 5, text: 'After my brake pads started squealing, I brought my car in for an inspection. They fixed the issue promptly and even noticed a few other things that needed attention. Very thorough and professional service.' },
+  { id: 5, image: daveMill, name: 'Dave Mill', rating: 5, text: 'I had an emergency repair needed before a long road trip. They squeezed me in, got the work done same day, and made sure everything was safe for travel. Excellent customer service and quality workmanship!' },
 ];
 
 const renderRating = (rating) => {
