@@ -41,6 +41,7 @@ export default function AppointmentPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [appointments, setAppointments] = useState([]);
+  const [allAppointments, setAllAppointments] = useState([]); // All appointments for time slot checking
   const [showAppointments, setShowAppointments] = useState(false);
   const [loadingAppointments, setLoadingAppointments] = useState(false);
   const [userEmail, setUserEmail] = useState("");
@@ -239,21 +240,19 @@ export default function AppointmentPage() {
         setError(`Failed to load appointments: ${errors.map(e => e.message).join(', ')}`);
         setAppointments([]);
       } else {
-        // Filter appointments by user's email
-        const filtered = (appointmentsData || []).filter(apt => apt.email === userEmail);
+        // Filter appointments by user's email (case-insensitive, trimmed)
+        const userEmailNormalized = (userEmail || "").trim().toLowerCase();
+        const filtered = (appointmentsData || []).filter(apt => {
+          const aptEmailNormalized = (apt.email || "").trim().toLowerCase();
+          return aptEmailNormalized === userEmailNormalized;
+        });
         setAppointments(filtered);
         console.log(`Successfully fetched ${filtered.length} appointment(s) for ${userEmail}:`, filtered);
         
         if (filtered.length === 0) {
           if (appointmentsData && appointmentsData.length > 0) {
-            console.warn(`Found ${appointmentsData.length} total appointments, but none match email ${userEmail}`);
-            console.log("All appointments with emails:", appointmentsData.map(apt => ({ 
-              id: apt.id, 
-              email: apt.email,
-              firstName: apt.firstName,
-              date: apt.appointmentDate 
-            })));
-            setError(`Found ${appointmentsData.length} appointment(s) in database, but none match your email. Your email: ${userEmail}`);
+            console.log("No appointments found for this user. This is normal if you haven't booked any yet.");
+            // Don't show error if user just hasn't booked appointments yet
           } else {
             console.log("No appointments found in database at all.");
           }
@@ -295,12 +294,29 @@ export default function AppointmentPage() {
     return dates;
   }
 
-  // Get available time slots for a selected date (exclude already booked times)
+  // Fetch all appointments for time slot availability checking
+  async function fetchAllAppointments() {
+    try {
+      const client = generateClient();
+      const { data: appointmentsData, errors } = await client.models.Appointment.list();
+      
+      if (errors && errors.length > 0) {
+        console.error("GraphQL errors fetching all appointments:", errors);
+      } else {
+        setAllAppointments(appointmentsData || []);
+      }
+    } catch (err) {
+      console.error("Error fetching all appointments:", err);
+    }
+  }
+
+  // Get available time slots for a selected date (exclude already booked times from ALL appointments)
   function getAvailableTimeSlots(selectedDate) {
     if (!selectedDate) return generateTimeSlots();
     
     const allSlots = generateTimeSlots();
-    const bookedSlots = appointments
+    // Use allAppointments instead of just user's appointments to check availability
+    const bookedSlots = allAppointments
       .filter(apt => apt.appointmentDate === selectedDate)
       .map(apt => apt.appointmentTime);
     
@@ -325,6 +341,7 @@ export default function AppointmentPage() {
     if (user && isEmailVerified && userEmail) {
       console.log("Fetching appointments...");
       fetchAppointments();
+      fetchAllAppointments(); // Also fetch all appointments for time slot availability
     } else {
       console.log("Not fetching appointments - missing requirements");
     }
@@ -409,6 +426,7 @@ export default function AppointmentPage() {
       // Wait a moment for the database to update, then refresh appointments list
       setTimeout(async () => {
         await fetchAppointments();
+        await fetchAllAppointments(); // Also refresh all appointments for time slot availability
       }, 500);
       
       setTimeout(() => {

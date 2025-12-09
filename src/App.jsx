@@ -11,6 +11,7 @@ import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
 import Testimonials from "./components/Testimonials/Testimonials";
 import AppointmentSection from "./components/AppointmentSection/AppointmentSection";
 import AppointmentPage from "./components/pages/AppointmentPage";
+import AdminDashboard from "./components/pages/AdminDashboard";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -40,6 +41,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/appointment" element={<AppointmentPage />} />
+        <Route path="/login" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
