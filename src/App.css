@@ -9,6 +9,7 @@ html {
   margin: 0 auto;
   padding: 0 2rem 2rem 2rem;
   text-align: center;
+  align-self: flex-start;
 }
 
 .logo {
