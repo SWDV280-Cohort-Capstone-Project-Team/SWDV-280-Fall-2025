@@ -47,6 +47,8 @@ export default function AppointmentPage() {
   const [userEmail, setUserEmail] = useState("");
   const [activeTab, setActiveTab] = useState("appointments"); // "appointments" or "book"
   const [hoveredTimeSlot, setHoveredTimeSlot] = useState(null);
+  const [editingAppointment, setEditingAppointment] = useState(null);
+  const [editForm, setEditForm] = useState(null);
 
   useEffect(() => {
     checkAuthStatus();
@@ -440,6 +442,155 @@ export default function AppointmentPage() {
     }
   }
 
+  async function handleCancelAppointment(appointmentId) {
+    if (!window.confirm("Are you sure you want to cancel this appointment?")) {
+      return;
+    }
+
+    setError("");
+    try {
+      const client = generateClient();
+      const result = await client.models.Appointment.update({
+        id: appointmentId,
+        status: "cancelled",
+      });
+
+      if (result.errors && result.errors.length > 0) {
+        setError(`Failed to cancel appointment: ${result.errors.map(e => e.message).join(', ')}`);
+        return;
+      }
+
+      setSuccess("Appointment cancelled successfully!");
+      await fetchAppointments();
+      await fetchAllAppointments();
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (err) {
+      console.error("Error cancelling appointment:", err);
+      setError(err.message || "Failed to cancel appointment");
+    }
+  }
+
+  async function handleApproveAppointment(appointmentId) {
+    setError("");
+    try {
+      const client = generateClient();
+      const result = await client.models.Appointment.update({
+        id: appointmentId,
+        status: "confirmed",
+      });
+
+      if (result.errors && result.errors.length > 0) {
+        setError(`Failed to approve appointment: ${result.errors.map(e => e.message).join(', ')}`);
+        return;
+      }
+
+      setSuccess("Appointment approved successfully!");
+      await fetchAppointments();
+      await fetchAllAppointments();
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (err) {
+      console.error("Error approving appointment:", err);
+      setError(err.message || "Failed to approve appointment");
+    }
+  }
+
+  function handleEditAppointment(appointment) {
+    // Parse services if it's a JSON string
+    let services = appointment.services;
+    if (typeof services === 'string') {
+      try {
+        services = JSON.parse(services);
+      } catch (e) {
+        services = {
+          oilChange: false,
+          dentRepair: false,
+          tireRotation: false,
+          tireChange: false,
+          repaint: false,
+        };
+      }
+    }
+
+    setEditForm({
+      id: appointment.id,
+      firstName: appointment.firstName,
+      lastName: appointment.lastName || "",
+      makeModel: appointment.makeModel || "",
+      comments: appointment.comments || "",
+      appointmentDate: appointment.appointmentDate,
+      appointmentTime: appointment.appointmentTime,
+      services: services || {
+        oilChange: false,
+        dentRepair: false,
+        tireRotation: false,
+        tireChange: false,
+        repaint: false,
+      },
+    });
+    setEditingAppointment(appointment.id);
+  }
+
+  function handleEditChange(e) {
+    const { name, value } = e.target;
+    setEditForm(prev => ({ ...prev, [name]: value }));
+  }
+
+  function handleEditServiceToggle(name) {
+    setEditForm(prev => ({
+      ...prev,
+      services: { ...prev.services, [name]: !prev.services[name] },
+    }));
+  }
+
+  async function handleUpdateAppointment(e) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    if (!editForm.firstName.trim() || !editForm.appointmentDate || !editForm.appointmentTime) {
+      setError("Please fill in all required fields (First Name, Date, and Time).");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const client = generateClient();
+      const result = await client.models.Appointment.update({
+        id: editForm.id,
+        firstName: editForm.firstName,
+        lastName: editForm.lastName,
+        makeModel: editForm.makeModel,
+        comments: editForm.comments,
+        services: JSON.stringify(editForm.services),
+        appointmentDate: editForm.appointmentDate,
+        appointmentTime: editForm.appointmentTime,
+      });
+
+      if (result.errors && result.errors.length > 0) {
+        setError(`Failed to update appointment: ${result.errors.map(e => e.message).join(', ')}`);
+        setLoading(false);
+        return;
+      }
+
+      setSuccess("Appointment updated successfully!");
+      setEditingAppointment(null);
+      setEditForm(null);
+      setLoading(false);
+      await fetchAppointments();
+      await fetchAllAppointments();
+      setTimeout(() => setSuccess(""), 3000);
+    } catch (err) {
+      console.error("Error updating appointment:", err);
+      setError(err.message || "Failed to update appointment");
+      setLoading(false);
+    }
+  }
+
+  function handleCancelEdit() {
+    setEditingAppointment(null);
+    setEditForm(null);
+  }
+
   // Show verification form if verification is needed (check this first, even if user is null)
   if (showVerification) {
     return (
@@ -635,36 +786,151 @@ export default function AppointmentPage() {
                   const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
                   const displayTime = `${hour12}:${minutes} ${ampm}`;
                   
+                  const isEditing = editingAppointment === apt.id;
+                  
                   return (
                     <div key={apt.id} className="appointment-item">
-                      <div className="appointment-details">
-                        <h3>{apt.firstName} {apt.lastName}</h3>
-                        <p><strong>Date:</strong> {formattedDate}</p>
-                        <p><strong>Time:</strong> {displayTime}</p>
-                        {apt.makeModel && <p><strong>Vehicle:</strong> {apt.makeModel}</p>}
-                        {(() => {
-                          // Parse services if it's a JSON string, otherwise use as-is
-                          let services = apt.services;
-                          if (typeof services === 'string') {
-                            try {
-                              services = JSON.parse(services);
-                            } catch (e) {
-                              console.error("Error parsing services JSON:", e);
-                              services = null;
-                            }
-                          }
-                          return services && Object.keys(services).some(key => services[key]) && (
-                            <p><strong>Services:</strong> {
-                              Object.entries(services)
-                                .filter(([_, value]) => value)
-                                .map(([key, _]) => key.replace(/([A-Z])/g, ' $1').trim())
-                                .join(', ')
-                            }</p>
-                          );
-                        })()}
-                        {apt.comments && <p><strong>Comments:</strong> {apt.comments}</p>}
-                        <p><strong>Status:</strong> <span className={`status-${apt.status}`}>{apt.status}</span></p>
-                      </div>
+                      {isEditing ? (
+                        <form onSubmit={handleUpdateAppointment} className="appointment-form">
+                          <h3>Edit Appointment</h3>
+                          <label>
+                            First Name *
+                            <input
+                              name="firstName"
+                              value={editForm.firstName}
+                              onChange={handleEditChange}
+                              className="text-input"
+                              required
+                            />
+                          </label>
+                          <label>
+                            Last Name
+                            <input
+                              name="lastName"
+                              value={editForm.lastName}
+                              onChange={handleEditChange}
+                              className="text-input"
+                            />
+                          </label>
+                          <label>
+                            Vehicle Make/Model
+                            <input
+                              name="makeModel"
+                              value={editForm.makeModel}
+                              onChange={handleEditChange}
+                              className="text-input"
+                            />
+                          </label>
+                          <label>
+                            Appointment Date *
+                            <input
+                              name="appointmentDate"
+                              type="date"
+                              value={editForm.appointmentDate}
+                              onChange={handleEditChange}
+                              className="text-input"
+                              min={today.toISOString().split('T')[0]}
+                              max={maxDate.toISOString().split('T')[0]}
+                              required
+                            />
+                          </label>
+                          <label>
+                            Appointment Time *
+                            <select
+                              name="appointmentTime"
+                              value={editForm.appointmentTime}
+                              onChange={handleEditChange}
+                              className="text-input"
+                              required
+                            >
+                              <option value="">Select Time</option>
+                              {generateTimeSlots().map(time => (
+                                <option key={time} value={time}>{time}</option>
+                              ))}
+                            </select>
+                          </label>
+                          <div className="services-row">
+                            {Object.entries(editForm.services).map(([key, value]) => (
+                              <div key={key} className="service-item">
+                                <input
+                                  id={`edit-${key}-${apt.id}`}
+                                  type="checkbox"
+                                  checked={value}
+                                  onChange={() => handleEditServiceToggle(key)}
+                                />
+                                <label htmlFor={`edit-${key}-${apt.id}`}>
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                                </label>
+                              </div>
+                            ))}
+                          </div>
+                          <label>
+                            Comments
+                            <textarea
+                              name="comments"
+                              value={editForm.comments}
+                              onChange={handleEditChange}
+                              rows={4}
+                              className="comments"
+                            />
+                          </label>
+                          <div className="submit-row">
+                            <button type="button" onClick={handleCancelEdit} className="cancel-btn">
+                              Cancel
+                            </button>
+                            <button type="submit" className="submit-btn" disabled={loading}>
+                              {loading ? "Updating..." : "Update Appointment"}
+                            </button>
+                          </div>
+                        </form>
+                      ) : (
+                        <>
+                          <div className="appointment-details">
+                            <h3>{apt.firstName} {apt.lastName}</h3>
+                            <p><strong>Date:</strong> {formattedDate}</p>
+                            <p><strong>Time:</strong> {displayTime}</p>
+                            {apt.makeModel && <p><strong>Vehicle:</strong> {apt.makeModel}</p>}
+                            {(() => {
+                              // Parse services if it's a JSON string, otherwise use as-is
+                              let services = apt.services;
+                              if (typeof services === 'string') {
+                                try {
+                                  services = JSON.parse(services);
+                                } catch (e) {
+                                  console.error("Error parsing services JSON:", e);
+                                  services = null;
+                                }
+                              }
+                              return services && Object.keys(services).some(key => services[key]) && (
+                                <p><strong>Services:</strong> {
+                                  Object.entries(services)
+                                    .filter(([_, value]) => value)
+                                    .map(([key, _]) => key.replace(/([A-Z])/g, ' $1').trim())
+                                    .join(', ')
+                                }</p>
+                              );
+                            })()}
+                            {apt.comments && <p><strong>Comments:</strong> {apt.comments}</p>}
+                            <p><strong>Status:</strong> <span className={`status-${apt.status}`}>{apt.status}</span></p>
+                          </div>
+                          <div className="appointment-actions">
+                            <button
+                              onClick={() => handleEditAppointment(apt)}
+                              className="action-btn edit-btn"
+                            >
+                              Edit
+                            </button>
+                            {apt.status !== 'cancelled' && (
+                              <button
+                                onClick={() => handleCancelAppointment(apt.id)}
+                                className="action-btn cancel-btn"
+                              >
+                                Cancel
+                              </button>
+                            )}
+                          </div>
+                        </>
+                      )}
                     </div>
                   );
                 })}

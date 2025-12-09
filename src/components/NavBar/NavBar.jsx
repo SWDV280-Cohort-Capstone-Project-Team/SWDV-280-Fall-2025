@@ -74,8 +74,8 @@ export default function NavBar() {
           <a href="#About" onClick={(e) => { e.preventDefault(); scrollToSection('About'); }}>About</a>
           <a href="#Services" onClick={(e) => { e.preventDefault(); scrollToSection('Services'); }}>Services</a>
           <a href="#ContactUS" onClick={(e) => { e.preventDefault(); scrollToSection('ContactUS'); }}>Contact</a>
-          <Link to="/appointment" onClick={closeMenu}>Appointment</Link>
-          <Link to="/login" onClick={closeMenu}>Login</Link>
+          <Link to="/appointment" onClick={closeMenu}>Appointments</Link>
+          <Link to="/admin" onClick={closeMenu}>Admin</Link>
         </nav>
       </div>
     </header>

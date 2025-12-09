@@ -1,5 +1,5 @@
 {
- "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.18.0\",\"stackType\":\"root\",\"metadata\":{}}",
+ "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.19.0\",\"stackType\":\"root\",\"metadata\":{}}",
  "Metadata": {
   "AWS::Amplify::Platform": {
    "version": "1",
@@ -41,6 +41,7 @@
     "awsAppsyncAuthenticationType",
     "awsAppsyncRegion",
     "amplifyApiModelSchemaS3Uri",
+    "awsAppsyncApiKey",
     "awsAppsyncAdditionalAuthenticationTypes"
    ]
   }
@@ -197,8 +198,16 @@
     ]
    }
   },
+  "awsAppsyncApiKey": {
+   "Value": {
+    "Fn::GetAtt": [
+     "data7552DF31",
+     "Outputs.amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPIDefaultApiKey151CFBC3ApiKey"
+    ]
+   }
+  },
   "awsAppsyncAdditionalAuthenticationTypes": {
-   "Value": "AWS_IAM"
+   "Value": "API_KEY,AWS_IAM"
   }
  },
  "Resources": {
@@ -231,7 +240,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/9fb96d078e273fc8ad2aaaabb7882ddf59ac7b4a733e3a556600449d2cf4cc5b.json"
+       "/02b5fe59e24f59c49a6faee2bbf58d2e01ceaa0ed2e933d0b1cae9abd281d763.json"
       ]
      ]
     }
@@ -299,7 +308,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/15327fe0513259c64afa06d673200b518353dd2da2ff11e7c011f7084994750d.json"
+       "/f9712c8d0860ef5b76627d1016cd0df5fdb8ba04fbb52859ade8d7a5d94e5496.json"
       ]
      ]
     }
@@ -315,7 +324,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI00zNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUZGekaGeoaKWcWZmbpFpXklmbmpekEQGgARxDL5VAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI20jNUTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUZGekaGeoaKWcWZmbpFpXklmbmpekEQGgCGNIyvVAAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/CDKMetadata/Default"

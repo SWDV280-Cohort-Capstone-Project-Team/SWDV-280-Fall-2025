@@ -1,5 +1,5 @@
 {
- "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.9.0\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
+ "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.10.0\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
  "Resources": {
   "amplifyAuthUserPool4BA7F805": {
    "Type": "AWS::Cognito::UserPool",
@@ -301,7 +301,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02LwQ6CMBBEv4V7WaUH74aTF2Mwnk1tV10o24QuEtP03w0xKKeZeTOjQVc72BZmiqV1XenpBumIUdCdxdhOmSlekw0PJgmQLhGHUwhe1Xf++cXUnpBlXf3JwSELyXs5r3MTPO5FjH32yJIVmR7SDOfhrDmrBmMYB4tZcXAIbdy8tAZdQVW0kagcRhbqEZqvfgCyZuNn1wAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02LwQ6CMBBEv4V7WUP9AsPJizEYzqa2qy6UbkIXiWn674YYlNPMvJnRoPcaqsLMsbSuLz3dIJ0wCrqLGNsrM8drsvwIJAypjTiemb2q7+HnV1N7wiDb6k+ODoOQvNfzNjfs8SBi7HPAIFmRGSAtcBkumrNqMPI0WswqsEPo4u6lNegKqqKLROU4BaEBofnqB+bLx17XAAAA"
    },
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/auth/CDKMetadata/Default"

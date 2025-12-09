@@ -1,10 +1,13 @@
 {
- "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.20.3\",\"stackType\":\"api-AppSync\",\"metadata\":{\"dataSources\":\"dynamodb\",\"authorizationModes\":\"amazon_cognito_identity_pools,amazon_cognito_user_pools,aws_iam\",\"customOperations\":\"\"}}",
+ "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifySandbox\",\"createdWith\":\"1.20.3\",\"stackType\":\"api-AppSync\",\"metadata\":{\"dataSources\":\"dynamodb\",\"authorizationModes\":\"amazon_cognito_identity_pools,amazon_cognito_user_pools,api_key,aws_iam\",\"customOperations\":\"\"}}",
  "Resources": {
   "amplifyDataGraphQLAPI42A6FA33": {
    "Type": "AWS::AppSync::GraphQLApi",
    "Properties": {
     "AdditionalAuthenticationProviders": [
+     {
+      "AuthenticationType": "API_KEY"
+     },
      {
       "AuthenticationType": "AWS_IAM"
      }
@@ -51,13 +54,30 @@
      ]
     },
     "DefinitionS3Location": {
-     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fda17c1fe0f928a047293a073f8e0f83a259e16d63f41f3528d171c9315e807c.graphql"
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe30507392d2690cef262b607d12f0afc823cf546faf388ec147ce9dd0c57ca0.graphql"
     }
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/GraphQLAPI/TransformerSchema"
+   }
+  },
+  "amplifyDataGraphQLAPIDefaultApiKey1C8ED374": {
+   "Type": "AWS::AppSync::ApiKey",
+   "Properties": {
+    "ApiId": {
+     "Fn::GetAtt": [
+      "amplifyDataGraphQLAPI42A6FA33",
+      "ApiId"
+     ]
+    },
+    "Expires": 1767905548
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/GraphQLAPI/DefaultApiKey"
    }
   },
   "amplifyDataGraphQLAPINONEDS684BF699": {
@@ -120,7 +140,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/e21e5643c0701a8ccf3ca81144593c914c026d5c596601a34d75f5aebfa5ce9c.json"
+       "/ff8e441c02a2fb02af625e4501eba64fbd56d325da3273e7d92d18950c5dfe1a.json"
       ]
      ]
     }
@@ -210,7 +230,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/3eb2fdd5d4f80c52bdc5687c11eb8a596b1a6ab6dae06f3c94a2bebd191e5c01.json"
+       "/da7c5c54c90996b32d67e1eb5cbece8cb222ecd2b5502120a247fde42d104836.json"
       ]
      ]
     }
@@ -399,7 +419,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "14ef791386bc21ef0f9404dfa7e54912101244ce79398c6d17c183ad32844533.zip"
+     "e889574f8c9280e49ed22742e38b807b427a27b6cdeea473c6f4ee5251500c20.zip"
     ],
     "SourceMarkers": [
      {}
@@ -468,15 +488,7 @@
       "Arn"
      ]
     },
-    "Runtime": {
-     "Fn::FindInMap": [
-      "LatestNodeRuntimeMap",
-      {
-       "Ref": "AWS::Region"
-      },
-      "value"
-     ]
-    },
+    "Runtime": "nodejs22.x",
     "Description": {
      "Fn::Join": [
       "",
@@ -912,7 +924,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "9374eacafeba792a36fd5686e0cbaab3e036ca9df0cacc680a4598a1e5c66b1d.zip"
+     "91c839f0fa99b19871420ceb5a9e65f11f1603bb954886f66331c2f8c83bd7ae.zip"
     ],
     "SourceMarkers": [
      {}
@@ -1008,7 +1020,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1VQy27CMBD8Fu7GLanUewhqLxRRIvUaLc4mGBzb9TpEUZR/rxxDKKd5rDye3YQnq3f+uoCOlqK8LJU88mGH5LHMPYgLOyCZ1glk0FExgLXUa8GHTwf29KtSK9dAyLJKT873NrXyn8rFCRtgO6NxAx7yGJVV+qFGRm98WLfigj5MbizC3igp+od901GEn8PrYijRKtM3qD2Po81sMCBCTzwNMDIFzbEEPmSV3kKP7gcdSaNZLnWt0Bv90WrhgzOTrJrNkUlo+HAwalpiwkfFyEZG1PAh907qeg8OGvTopvldjGOQ8b5ZS94085VD6p3HroUKPQvoSCjJ044yJafqbFop91BLXT/lB/EF1k7+U/7emass0cXTaVMiP9PLNUl4suKrxZmkXLpWe9kgP0T8A6XjOboiAgAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Qy27CMBD8Fu7GFeELQlB7KEKUSL1Gi7OkBj9Sr0MUWfn3yjGEtqd5rHY0uxnP1hlfLaCnpaivSyVPPOyRPNalB3FlRyTbOYEMeqoCtC0NRvDw5qD9+lZ5KzdAyIqzmZyPXd7KX6oUX6ghGnkr33Fge2twCx7KFFqczVONjNY8bDpxRR8nd5bgYJUUw9O+6yRih7hdhRpbZQeNxvM02s4GAyL0xPMII1OgTzXwUJzNDgZ0n+hIWsNKaRqF3prXzggfnZkU59kcmQTNw9Gq6YgJnxUTGxmR5qH0TprmAA40enTT/CHGMcr06aIjb/X875j64KlrpWLPCnoSSvK8p0LJqTqbTio9NNI0f/L/hR6cvckaXfqXsTXyC73csoxnK75aXEjKpeuMlxr5MeEPmd6n2iECAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/CDKMetadata/Default"
@@ -1065,148 +1077,6 @@
   },
   "referencetoamplifyswdv280fall2025jacobsandbox7e1b014f77authNestedStackauthNestedStackResource0A2EB7ECOutputsamplifyswdv280fall2025jacobsandbox7e1b014f77authamplifyAuthIdentityPoolDAA3D2BARef": {
    "Type": "String"
-  }
- },
- "Mappings": {
-  "LatestNodeRuntimeMap": {
-   "af-south-1": {
-    "value": "nodejs22.x"
-   },
-   "ap-east-1": {
-    "value": "nodejs22.x"
-   },
-   "ap-east-2": {
-    "value": "nodejs22.x"
-   },
-   "ap-northeast-1": {
-    "value": "nodejs22.x"
-   },
-   "ap-northeast-2": {
-    "value": "nodejs22.x"
-   },
-   "ap-northeast-3": {
-    "value": "nodejs22.x"
-   },
-   "ap-south-1": {
-    "value": "nodejs22.x"
-   },
-   "ap-south-2": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-1": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-2": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-3": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-4": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-5": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-6": {
-    "value": "nodejs22.x"
-   },
-   "ap-southeast-7": {
-    "value": "nodejs22.x"
-   },
-   "ca-central-1": {
-    "value": "nodejs22.x"
-   },
-   "ca-west-1": {
-    "value": "nodejs22.x"
-   },
-   "cn-north-1": {
-    "value": "nodejs22.x"
-   },
-   "cn-northwest-1": {
-    "value": "nodejs22.x"
-   },
-   "eu-central-1": {
-    "value": "nodejs22.x"
-   },
-   "eu-central-2": {
-    "value": "nodejs22.x"
-   },
-   "eu-isoe-west-1": {
-    "value": "nodejs22.x"
-   },
-   "eu-north-1": {
-    "value": "nodejs22.x"
-   },
-   "eu-south-1": {
-    "value": "nodejs22.x"
-   },
-   "eu-south-2": {
-    "value": "nodejs22.x"
-   },
-   "eu-west-1": {
-    "value": "nodejs22.x"
-   },
-   "eu-west-2": {
-    "value": "nodejs22.x"
-   },
-   "eu-west-3": {
-    "value": "nodejs22.x"
-   },
-   "eusc-de-east-1": {
-    "value": "nodejs22.x"
-   },
-   "il-central-1": {
-    "value": "nodejs22.x"
-   },
-   "me-central-1": {
-    "value": "nodejs22.x"
-   },
-   "me-south-1": {
-    "value": "nodejs22.x"
-   },
-   "mx-central-1": {
-    "value": "nodejs22.x"
-   },
-   "sa-east-1": {
-    "value": "nodejs22.x"
-   },
-   "us-east-1": {
-    "value": "nodejs22.x"
-   },
-   "us-east-2": {
-    "value": "nodejs22.x"
-   },
-   "us-gov-east-1": {
-    "value": "nodejs22.x"
-   },
-   "us-gov-west-1": {
-    "value": "nodejs22.x"
-   },
-   "us-iso-east-1": {
-    "value": "nodejs22.x"
-   },
-   "us-iso-west-1": {
-    "value": "nodejs22.x"
-   },
-   "us-isob-east-1": {
-    "value": "nodejs18.x"
-   },
-   "us-isob-west-1": {
-    "value": "nodejs18.x"
-   },
-   "us-isof-east-1": {
-    "value": "nodejs22.x"
-   },
-   "us-isof-south-1": {
-    "value": "nodejs22.x"
-   },
-   "us-west-1": {
-    "value": "nodejs22.x"
-   },
-   "us-west-2": {
-    "value": "nodejs22.x"
-   }
   }
  },
  "Conditions": {
@@ -1497,6 +1367,14 @@
     "Fn::GetAtt": [
      "amplifyDataAmplifyCodegenAssetsAmplifyCodegenAssetsDeploymentCustomResource1536MiB21775929",
      "DestinationBucketArn"
+    ]
+   }
+  },
+  "amplifyswdv280fall2025jacobsandbox7e1b014f77dataamplifyDataGraphQLAPIDefaultApiKey151CFBC3ApiKey": {
+   "Value": {
+    "Fn::GetAtt": [
+     "amplifyDataGraphQLAPIDefaultApiKey1C8ED374",
+     "ApiKey"
     ]
    }
   }

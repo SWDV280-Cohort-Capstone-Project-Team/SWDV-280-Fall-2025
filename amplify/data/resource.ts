@@ -15,6 +15,7 @@ const schema = a.schema({
     })
     .authorization((allow) => [
       allow.authenticated().to(['create', 'read', 'update']),
+      allow.publicApiKey().to(['read', 'update']), // Allow public read/update access for admin panel (development)
     ]),
 });
 
@@ -25,6 +26,10 @@ export const data = defineData({
   authorizationModes: {
     // Primary authentication: AMAZON_COGNITO_USER_POOLS (for Cognito User Pools authentication)
     defaultAuthorizationMode: 'userPool',
+    // Add API key for public/unauthenticated access (development only)
+    apiKeyAuthorizationMode: {
+      expiresInDays: 30,
+    },
   },
 });
 

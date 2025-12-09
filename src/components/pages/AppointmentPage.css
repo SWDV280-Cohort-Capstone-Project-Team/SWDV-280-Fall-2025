@@ -455,6 +455,67 @@ select.text-input {
   text-align: center;
 }
 
+/* Appointment Actions */
+.appointment-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #c7dce0;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid;
+  flex: 1;
+  min-width: 100px;
+}
+
+.edit-btn {
+  background-color: #8dbbb7;
+  color: #fff;
+  border-color: #8dbbb7;
+}
+
+.edit-btn:hover {
+  background-color: #7aa8a4;
+  border-color: #7aa8a4;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.approve-btn {
+  background-color: #3c3;
+  color: #fff;
+  border-color: #3c3;
+}
+
+.approve-btn:hover {
+  background-color: #2a2;
+  border-color: #2a2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn {
+  background-color: #fff;
+  color: #c33;
+  border-color: #c33;
+}
+
+.cancel-btn:hover {
+  background-color: #fee;
+  border-color: #c33;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 
 /* responsive */
 @media (max-width: 768px) {

@@ -443,7 +443,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWNywqDMBBFv8V9nNYI3ddCl6XoB8iYTCU+EnCSSgn596K2q3MuZ3ElyOIC5wxXzpUe88l0EB/EnnTjUY0CV26jwRli7SYSt5fd+XSTUZ9tHpbEhHOnEeI9WOWNs1v7exJctshMnuG6QXAJVVAj+QqZkqiJXVgUib02Hntj+/3sF5KwThMMfHpLCbKAIhvYmHwJ1puZoD74BSeKKfvPAAAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWNQQqDMBBFz+I+TjGeoBa6LEUPIGMylWhMwEkqJeTuRW1X733e4kuQtYSqwI1LpefSmgHSgziQ7gKqWeDGfTK4QGq9JXF7uYNPb4367PO0LCwug0ZI9+hUMN7t7e9ZcN0jMwWG6w7BNTRRzRQaZMqiJfZxVSSO2gUcjRuPs1/IwnlNMPHlLSXICqpiYmPKNbpgFoL25BeLLA4MzwAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-swdv280fall2025-jacob-sandbox-7e1b014f77/data/amplifyData/AmplifyTableManager/CDKMetadata/Default"
