@@ -159,14 +159,31 @@ export default function AppointmentPage() {
         confirmationCode: verificationCode,
       });
       
-      setSuccess("Email verified! Please sign in to book an appointment.");
-      setShowVerification(false);
-      setLoading(false);
-      // Clear verification code and show login
-      setVerificationCode("");
-      setShowLogin(true);
-      // Clear password from auth form for security
-      setAuthForm({ ...authForm, password: "" });
+      // After successful verification, automatically sign the user in
+      try {
+        await signIn({
+          username: authForm.email || user?.username,
+          password: authForm.password,
+        });
+        
+        setSuccess("Email verified! You have been signed in.");
+        setShowVerification(false);
+        setVerificationCode("");
+        setLoading(false);
+        // Clear password from auth form for security
+        setAuthForm({ ...authForm, password: "" });
+        // Update auth status to reflect signed-in state
+        await checkAuthStatus();
+      } catch (signInErr) {
+        // If auto-sign-in fails, show login form
+        setError("Email verified, but automatic sign-in failed. Please sign in manually.");
+        setShowVerification(false);
+        setVerificationCode("");
+        setShowLogin(true);
+        setLoading(false);
+        // Clear password from auth form for security
+        setAuthForm({ ...authForm, password: "" });
+      }
     } catch (err) {
       setError(err.message || "Failed to verify email");
       setLoading(false);
@@ -405,6 +422,46 @@ export default function AppointmentPage() {
     }
   }
 
+  // Show verification form if verification is needed (check this first, even if user is null)
+  if (showVerification) {
+    return (
+      <section className="appointment-wrapper">
+        <div className="appointment-card">
+          <h1 className="card-title">Verify Your Email</h1>
+          <p className="auth-message">Please verify your email address to book an appointment. Check your inbox for the verification code.</p>
+          
+          {error && <div className="error-message">{error}</div>}
+          {success && <div className="success-message">{success}</div>}
+
+          <form onSubmit={handleVerifyEmail} className="appointment-form">
+            <label>
+              Verification Code
+              <input
+                type="text"
+                value={verificationCode}
+                onChange={(e) => setVerificationCode(e.target.value)}
+                className="text-input"
+                placeholder="Enter verification code"
+                required
+              />
+            </label>
+            <div className="submit-row">
+              <button type="submit" className="submit-btn" disabled={loading}>
+                {loading ? "Verifying..." : "Verify Email"}
+              </button>
+            </div>
+            <p className="auth-switch">
+              Didn't receive a code?{" "}
+              <button type="button" onClick={handleResendCode} className="link-btn">
+                Resend Code
+              </button>
+            </p>
+          </form>
+        </div>
+      </section>
+    );
+  }
+
   // Show login form if not authenticated
   if (!user) {
     return (
@@ -507,46 +564,6 @@ export default function AppointmentPage() {
               </p>
             </form>
           )}
-        </div>
-      </section>
-    );
-  }
-
-  // Show verification form if email not verified
-  if (user && showVerification && !isEmailVerified) {
-    return (
-      <section className="appointment-wrapper">
-        <div className="appointment-card">
-          <h1 className="card-title">Verify Your Email</h1>
-          <p className="auth-message">Please verify your email address to book an appointment. Check your inbox for the verification code.</p>
-          
-          {error && <div className="error-message">{error}</div>}
-          {success && <div className="success-message">{success}</div>}
-
-          <form onSubmit={handleVerifyEmail} className="appointment-form">
-            <label>
-              Verification Code
-              <input
-                type="text"
-                value={verificationCode}
-                onChange={(e) => setVerificationCode(e.target.value)}
-                className="text-input"
-                placeholder="Enter verification code"
-                required
-              />
-            </label>
-            <div className="submit-row">
-              <button type="submit" className="submit-btn" disabled={loading}>
-                {loading ? "Verifying..." : "Verify Email"}
-              </button>
-            </div>
-            <p className="auth-switch">
-              Didn't receive a code?{" "}
-              <button type="button" onClick={handleResendCode} className="link-btn">
-                Resend Code
-              </button>
-            </p>
-          </form>
         </div>
       </section>
     );
