@@ -79,7 +79,7 @@ export default function Footer() {
                 e.currentTarget.src = FooterLogo;
               }} />
             </div>
-            <div className="brand">Otter Reliable</div>
+            <div className="brand">Otterly Reliable</div>
           </div>
 
           <div className="contact-block">
