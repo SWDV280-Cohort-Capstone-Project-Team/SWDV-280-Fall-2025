@@ -85,6 +85,14 @@
   gap: 12px;
   align-items: center;
   min-height: 28px;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.social-item:hover {
+  opacity: 0.8;
+  transform: translateX(2px);
 }
 .social-img {
   width: 28px;

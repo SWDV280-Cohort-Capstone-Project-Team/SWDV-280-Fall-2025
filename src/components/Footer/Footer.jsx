@@ -1,11 +1,27 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Logo from "../../assets/Icons/logo.png";
+import FooterLogo from "../../assets/Icons/footer-logo.png";
 import "./Footer.css";
 
-const SocialIcon = ({ imgPath, faClass, alt }) => {
+const SocialIcon = ({ imgPath, faClass, alt, url }) => {
   // If an image exists in public/social, browser will load it; otherwise Font Awesome renders.
+  const socialUrls = {
+    'Facebook': 'https://www.facebook.com',
+    'LinkedIn': 'https://www.linkedin.com',
+    'X': 'https://www.x.com',
+    'Instagram': 'https://www.instagram.com',
+    'Youtube': 'https://www.youtube.com'
+  };
+  
   return (
-    <span className="social-item">
+    <a 
+      href={url || socialUrls[alt] || '#'} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="social-item"
+      aria-label={alt}
+    >
       <img
         src={imgPath}
         alt={alt}
@@ -14,7 +30,7 @@ const SocialIcon = ({ imgPath, faClass, alt }) => {
       />
       <i className={faClass + " social-fa"} aria-hidden="true"></i>
       <span className="social-text">{alt}</span>
-    </span>
+    </a>
   );
 };
 
@@ -58,8 +74,10 @@ export default function Footer() {
         <div className="col contact">
           <div className="logo-wrap">
             <div className="logo-circle">
-              {/* public/logo.png — MUST be in public folder */}
-              <img src="./assets/Icons/footer-logo.png" alt="footer-logo" className="footer-logo" />
+              <img src={Logo} alt="Otterly Reliable logo" className="footer-logo" onError={(e) => {
+                // Fallback to footer-logo.png if logo.png doesn't load
+                e.currentTarget.src = FooterLogo;
+              }} />
             </div>
             <div className="brand">Otter Reliable</div>
           </div>
@@ -81,11 +99,11 @@ export default function Footer() {
         <div className="col follow">
           <h3 className="follow-title">Follow us</h3>
           <div className="social-list">
-            <SocialIcon imgPath="/social/facebook.png" faClass="fa-brands fa-facebook-f" alt="Facebook" />
-            <SocialIcon imgPath="/social/linkedin.png" faClass="fa-brands fa-linkedin-in" alt="LinkedIn" />
-            <SocialIcon imgPath="/social/x.png" faClass="fa-brands fa-x-twitter" alt="X" />
-            <SocialIcon imgPath="/social/instagram.png" faClass="fa-brands fa-instagram" alt="Instagram" />
-            <SocialIcon imgPath="/social/youtube.png" faClass="fa-brands fa-youtube" alt="Youtube" />
+            <SocialIcon imgPath="/social/facebook.png" faClass="fa-brands fa-facebook-f" alt="Facebook" url="https://www.facebook.com" />
+            <SocialIcon imgPath="/social/linkedin.png" faClass="fa-brands fa-linkedin-in" alt="LinkedIn" url="https://www.linkedin.com" />
+            <SocialIcon imgPath="/social/x.png" faClass="fa-brands fa-x-twitter" alt="X" url="https://www.x.com" />
+            <SocialIcon imgPath="/social/instagram.png" faClass="fa-brands fa-instagram" alt="Instagram" url="https://www.instagram.com" />
+            <SocialIcon imgPath="/social/youtube.png" faClass="fa-brands fa-youtube" alt="Youtube" url="https://www.youtube.com" />
           </div>
         </div>
 
