@@ -1,16 +1,29 @@
 /* src/components/Testimonials/Testimonials.css */
 
 .testimonials-section-container {
-    padding: 60px 0;
+    padding: 40px 0;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .testimonials-section-container {
+        padding: 50px 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .testimonials-section-container {
+        padding: 60px 0;
+    }
 }
 
 
 /* --- Horizontal Scroll Wrapper (Enables Scrolling) --- */
 .horizontal-scroll-wrapper {
     /* Padding provides the margin from the edge of the screen */
-    padding: 0 30px; 
+    padding: 0 15px; 
     max-width: 1200px;
     margin: 0 auto;
     
@@ -20,6 +33,18 @@
     /* Hide scrollbar */
     scrollbar-width: none; /* Firefox */
     -webkit-overflow-scrolling: touch; /* Improves scrolling on touch devices */
+}
+
+@media (min-width: 768px) {
+    .horizontal-scroll-wrapper {
+        padding: 0 25px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .horizontal-scroll-wrapper {
+        padding: 0 30px;
+    }
 }
 
 .horizontal-scroll-wrapper::-webkit-scrollbar {

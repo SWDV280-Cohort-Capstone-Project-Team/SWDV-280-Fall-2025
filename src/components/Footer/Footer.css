@@ -151,6 +151,51 @@
     text-align: center;
   }
   .links { text-align: center; }
+  .col {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 20px 15px 12px;
+  }
+  
+  .footer-inner {
+    gap: 15px;
+  }
+  
+  .logo-circle {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .brand {
+    font-size: 0.95rem;
+  }
+  
+  .contact-block .value,
+  .contact-block .small {
+    font-size: 0.85rem;
+  }
+  
+  .social-text {
+    font-size: 0.9rem;
+  }
+  
+  .quick-links li a {
+    font-size: 0.9rem;
+  }
+  
+  .copyright {
+    font-size: 0.85rem;
+  }
 }
 
 /* make footer height accessible to page layout (JS-less) by using CSS var --footer-height

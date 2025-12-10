@@ -5,9 +5,22 @@
 /* Photo Gallery Specific Styles */
 
 .carousel-container {
-    padding: 60px 20px 0px 20px;
+    padding: 40px 15px 0px 15px;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .carousel-container {
+        padding: 50px 20px 0px 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel-container {
+        padding: 60px 20px 0px 20px;
+    }
 }
 
 .carousel-container h2.section-title {
@@ -19,6 +32,8 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .wrapper i {
@@ -58,6 +73,40 @@
   right: -22px;
 }
 
+@media (max-width: 900px) {
+  .wrapper i:first-child {
+    left: 5px;
+  }
+  
+  .wrapper i:last-child {
+    right: 5px;
+  }
+  
+  .wrapper i {
+    height: 36px;
+    width: 36px;
+    font-size: 1rem;
+    line-height: 36px;
+  }
+}
+
+@media (max-width: 550px) {
+  .wrapper i:first-child {
+    left: 2px;
+  }
+  
+  .wrapper i:last-child {
+    right: 2px;
+  }
+  
+  .wrapper i {
+    height: 32px;
+    width: 32px;
+    font-size: 0.9rem;
+    line-height: 32px;
+  }
+}
+
 /* The display: none for arrows is now handled by conditional rendering in React */
 
 .wrapper .carousel {
@@ -86,7 +135,22 @@
   margin-left: 14px;
   width: calc(100% / 3);
   /* Make sure images are inline-block to respect white-space: nowrap and margins */
-  display: inline-block; 
+  display: inline-block;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .carousel img {
+    height: 280px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  .carousel img {
+    height: 240px;
+    margin-left: 8px;
+  }
 }
 
 .carousel img:first-child {
@@ -98,10 +162,18 @@
   .carousel img {
     width: calc(100% / 2);
   }
+  
+  .wrapper .carousel {
+    margin: 0 10px;
+  }
 }
 
 @media screen and (max-width: 550px) {
   .carousel img {
     width: 100%;
+  }
+  
+  .wrapper .carousel {
+    margin: 0 5px;
   }
 }

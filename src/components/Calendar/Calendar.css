@@ -193,4 +193,37 @@
     padding: 10px;
     --rdp-cell-size: 35px;
   }
+  
+  .appointment-calendar .rdp-caption {
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+  
+  .appointment-calendar .rdp-head_cell {
+    font-size: 0.85em;
+    padding: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-calendar {
+    padding: 8px;
+    --rdp-cell-size: 32px;
+  }
+  
+  .appointment-calendar .rdp-caption {
+    font-size: 0.95em;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .appointment-calendar .rdp-head_cell {
+    font-size: 0.8em;
+    padding: 2px;
+  }
+  
+  .appointment-calendar .rdp-button {
+    padding: 4px 8px;
+    font-size: 0.9em;
+  }
 }

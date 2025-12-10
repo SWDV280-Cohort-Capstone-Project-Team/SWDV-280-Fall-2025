@@ -226,6 +226,7 @@
         display:block; 
         padding:10px 14px; 
         width: 100%;
+        font-size: 0.95rem;
     }
     
     /* Hero Adjustments */
@@ -236,7 +237,18 @@
     }
     .lr-hero-img { 
         height:64vh; 
+        min-height: 350px;
         object-position: 68% 38%; 
+    }
+    
+    @media (max-width: 600px) {
+        .lr-nav {
+            right: 10px;
+            min-width: 140px;
+        }
+        .lr-hero-overlay {
+            padding: 18vh 15px 0 15px;
+        }
     }
 }
 
@@ -255,16 +267,29 @@
 @media (max-width: 480px) {
     .lr-hero-img { 
         height:50vh; 
+        min-height: 300px;
         object-position: 70% 42%; 
     }
     .lr-hero-overlay { 
         /* Mobile buttons are pushed in from the edge */
-        padding: 22vh 20px 0 20px; 
+        padding: 18vh 15px 0 15px; 
     }
     .lr-hero-buttons { 
         gap:10px; 
     }
     .lr-title { 
-        font-size:1rem; 
+        font-size:0.95rem; 
+    }
+    .lr-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        border-width: 2px;
+    }
+    .lr-container {
+        padding: 10px 15px;
+    }
+    .lr-logo-wrap {
+        width: 44px;
+        height: 44px;
     }
 }

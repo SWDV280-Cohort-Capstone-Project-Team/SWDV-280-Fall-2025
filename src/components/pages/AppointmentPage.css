@@ -1,19 +1,46 @@
 /* appointment wrapper */
 .appointment-wrapper {
   width: 100%;
-  padding: 60px 20px 0px 20px;
+  padding: 40px 15px 0px 15px;
   text-align: center;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .appointment-wrapper {
+    padding: 50px 20px 0px 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .appointment-wrapper {
+    padding: 60px 20px 0px 20px;
+  }
 }
 
 /* dashboard layout */
 .appointment-dashboard {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 25px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #fff;
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .appointment-dashboard {
+    padding: 35px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .appointment-dashboard {
+    padding: 40px;
+  }
 }
 
 .dashboard-header {
@@ -28,7 +55,19 @@
 .dashboard-title {
   margin: 0;
   color: #234e4d;
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+@media (min-width: 768px) {
+  .dashboard-title {
+    font-size: 1.75em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-title {
+    font-size: 2em;
+  }
 }
 
 .dashboard-content {
@@ -520,20 +559,20 @@ select.text-input {
 /* responsive */
 @media (max-width: 768px) {
   .appointment-card { 
-    padding: 25px;
-    max-width: 90%;
+    padding: 20px;
+    max-width: 100%;
   }
   .card-title {
-    font-size: 2em;
-    margin-bottom: 30px;
+    font-size: 1.5em;
+    margin-bottom: 25px;
   }
   .appointment-dashboard {
-    padding: 25px;
-    max-width: 95%;
+    padding: 20px;
+    max-width: 100%;
   }
   .dashboard-content {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 25px;
   }
   .dashboard-header {
     flex-direction: column;
@@ -550,5 +589,43 @@ select.text-input {
   .time-slot {
     padding: 8px 10px;
     font-size: 0.85em;
+  }
+  .section-header h2 {
+    font-size: 1.25em;
+  }
+  .appointment-form h2 {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-card {
+    padding: 15px;
+  }
+  .appointment-dashboard {
+    padding: 15px;
+  }
+  .dashboard-content {
+    gap: 20px;
+  }
+  .dashboard-section {
+    padding: 15px;
+  }
+  .time-slots-container {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 6px;
+  }
+  .time-slot {
+    padding: 6px 8px;
+    font-size: 0.8em;
+  }
+  .text-input,
+  .comments {
+    font-size: 0.95em;
+    padding: 10px 12px;
+  }
+  .submit-btn {
+    font-size: 1em;
+    padding: 0.5em 1em;
   }
 }
