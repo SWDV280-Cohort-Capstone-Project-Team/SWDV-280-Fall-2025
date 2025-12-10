@@ -20,6 +20,7 @@ export default function AdminDashboard() {
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [authForm, setAuthForm] = useState({ email: "", password: "" });
+  const [showAllAppointments, setShowAllAppointments] = useState(false);
 
   useEffect(() => {
     // For development: bypass authentication check and load appointments directly
@@ -381,41 +382,123 @@ export default function AdminDashboard() {
           {/* <button onClick={handleAdminLogout} className="sign-out-btn">Logout</button> */}
         </div>
 
+        <div style={{
+          padding: '15px 20px',
+          marginBottom: '20px',
+          backgroundColor: '#e8f4f3',
+          border: '1px solid #8dbbb7',
+          borderRadius: '8px',
+          color: '#234e4d',
+          fontSize: '0.95em',
+          lineHeight: '1.5'
+        }}>
+          <strong>Development Mode:</strong> Authentication has been temporarily disabled for development and demonstration purposes. In a production environment, this panel would require secure admin credentials to access.
+        </div>
+
         {error && <div className="error-message">{error}</div>}
         {success && <div className="success-message">{success}</div>}
 
         <div className="dashboard-content">
-          {/* Calendar Section */}
+          {/* Calendar Section - Left Side */}
           <div className="dashboard-section">
             <div className="section-header">
               <h2>Calendar View</h2>
             </div>
             <Calendar
               selectedDate={selectedDate}
-              onDateSelect={handleDateSelect}
+              onDateSelect={(date) => {
+                handleDateSelect(date);
+                setShowAllAppointments(false); // Switch to day view when date is selected
+              }}
               minDate={minDate}
               maxDate={maxDateStr}
             />
-            {selectedDate && (
-              <div style={{ marginTop: '20px' }}>
-                <h3 style={{ color: '#234e4d', marginBottom: '10px' }}>
-                  Appointments for {new Date(selectedDate).toLocaleDateString('en-US', { 
+          </div>
+
+          {/* Appointments Section - Right Side */}
+          <div className="dashboard-section">
+            <div className="section-header">
+              <h2>
+                {showAllAppointments ? 'All Appointments' : selectedDate ? 
+                  `Appointments for ${new Date(selectedDate).toLocaleDateString('en-US', { 
                     weekday: 'long', 
-                    year: 'numeric', 
                     month: 'long', 
                     day: 'numeric' 
-                  })}
-                </h3>
-                {appointmentsForSelectedDate.length === 0 ? (
-                  <p className="no-appointments">No appointments scheduled for this date.</p>
-                ) : (
-                  <div className="appointments-list">
-                    {appointmentsForSelectedDate.map((apt) => {
-                      const [hours, minutes] = apt.appointmentTime.split(':');
-                      const hour12 = parseInt(hours) % 12 || 12;
-                      const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
-                      const displayTime = `${hour12}:${minutes} ${ampm}`;
-                      
+                  })}` : 
+                  'Select a date to view appointments'}
+              </h2>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                {selectedDate && !showAllAppointments && (
+                  <button 
+                    onClick={() => setShowAllAppointments(true)} 
+                    className="refresh-btn"
+                  >
+                    View All
+                  </button>
+                )}
+                {showAllAppointments && (
+                  <button 
+                    onClick={() => {
+                      setShowAllAppointments(false);
+                      if (selectedDate) {
+                        // Keep the selected date when switching back
+                      }
+                    }} 
+                    className="refresh-btn"
+                  >
+                    View Day
+                  </button>
+                )}
+                <button 
+                  onClick={fetchAllAppointments} 
+                  className="refresh-btn"
+                  disabled={loadingAllAppointments}
+                >
+                  {loadingAllAppointments ? "Loading..." : "Refresh"}
+                </button>
+              </div>
+            </div>
+            
+            {(() => {
+              // Determine which appointments to display
+              const appointmentsToShow = showAllAppointments ? allAppointments : appointmentsForSelectedDate;
+              const isLoading = showAllAppointments ? (loadingAllAppointments && allAppointments.length === 0) : false;
+              
+              if (isLoading) {
+                return <p className="loading-message">Loading appointments...</p>;
+              }
+              
+              if (!selectedDate && !showAllAppointments) {
+                return <p className="no-appointments">Please select a date from the calendar to view appointments.</p>;
+              }
+              
+              if (appointmentsToShow.length === 0) {
+                if (showAllAppointments) {
+                  return <p className="no-appointments">No appointments booked yet.</p>;
+                } else {
+                  return <p className="no-appointments">No appointments scheduled for this date.</p>;
+                }
+              }
+              
+              return (
+                <div className="appointments-list">
+                  {appointmentsToShow.map((apt) => {
+                    const dateObj = new Date(apt.appointmentDate);
+                    const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                      weekday: 'long', 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    });
+                    const [hours, minutes] = apt.appointmentTime.split(':');
+                    const hour12 = parseInt(hours) % 12 || 12;
+                    const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
+                    const displayTime = `${hour12}:${minutes} ${ampm}`;
+                    
+                    const isEditing = editingAppointment === apt.id;
+                    
+                    // Show simplified view for day appointments, full view for all appointments
+                    if (!showAllAppointments && !isEditing) {
                       return (
                         <div key={apt.id} className="appointment-item">
                           <div className="appointment-details">
@@ -425,48 +508,33 @@ export default function AdminDashboard() {
                             {apt.makeModel && <p><strong>Vehicle:</strong> {apt.makeModel}</p>}
                             <p><strong>Status:</strong> <span className={`status-${apt.status}`}>{apt.status}</span></p>
                           </div>
+                          <div className="appointment-actions">
+                            <button
+                              onClick={() => handleEditAppointment(apt)}
+                              className="action-btn edit-btn"
+                            >
+                              Edit
+                            </button>
+                            {apt.status !== 'confirmed' && (
+                              <button
+                                onClick={() => handleApproveAppointment(apt.id)}
+                                className="action-btn approve-btn"
+                              >
+                                Approve
+                              </button>
+                            )}
+                            {apt.status !== 'cancelled' && (
+                              <button
+                                onClick={() => handleCancelAppointment(apt.id)}
+                                className="action-btn cancel-btn"
+                              >
+                                Cancel
+                              </button>
+                            )}
+                          </div>
                         </div>
                       );
-                    })}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* All Appointments Section */}
-          <div className="dashboard-section">
-            <div className="section-header">
-              <h2>All Appointments</h2>
-              <button 
-                onClick={fetchAllAppointments} 
-                className="refresh-btn"
-                disabled={loadingAllAppointments}
-              >
-                {loadingAllAppointments ? "Loading..." : "Refresh"}
-              </button>
-            </div>
-            
-            {loadingAllAppointments && allAppointments.length === 0 ? (
-              <p className="loading-message">Loading all appointments...</p>
-            ) : allAppointments.length === 0 ? (
-              <p className="no-appointments">No appointments booked yet.</p>
-            ) : (
-              <div className="appointments-list">
-                {allAppointments.map((apt) => {
-                  const dateObj = new Date(apt.appointmentDate);
-                  const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  });
-                  const [hours, minutes] = apt.appointmentTime.split(':');
-                  const hour12 = parseInt(hours) % 12 || 12;
-                  const ampm = parseInt(hours) >= 12 ? 'PM' : 'AM';
-                  const displayTime = `${hour12}:${minutes} ${ampm}`;
-                  
-                  const isEditing = editingAppointment === apt.id;
+                    }
                   
                   return (
                     <div key={apt.id} className="appointment-item">
@@ -622,9 +690,10 @@ export default function AdminDashboard() {
                       )}
                     </div>
                   );
-                })}
-              </div>
-            )}
+                  })}
+                </div>
+              );
+            })()}
           </div>
         </div>
       </div>

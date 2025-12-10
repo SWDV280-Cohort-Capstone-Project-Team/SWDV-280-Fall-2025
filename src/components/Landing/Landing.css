@@ -76,22 +76,30 @@
 /* --- Hamburger Menu Icon --- */
 .lr-hamburger { 
     display:none; 
-    width:36px; 
-    height:28px; 
-    padding:6px; 
+    width:40px; 
+    height:40px; 
+    padding:8px; 
     border-radius:6px; 
-    background:transparent; 
-    border: none; 
+    background:rgba(255, 255, 255, 0.9); 
+    border: 2px solid #16424a; 
     cursor:pointer; 
     z-index: 70; 
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.lr-hamburger:hover {
+    background:rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 .lr-hamburger span { 
     display:block; 
+    width: 24px;
     height:3px; 
-    background:#000000; 
-    margin:4px 0; 
+    background:#16424a; 
+    margin:2px 0; 
     border-radius:3px; 
     transition: transform .25s ease, opacity .25s ease; 
 }
@@ -183,7 +191,7 @@
 @media (max-width: 992px) {
     /* Show Hamburger */
     .lr-hamburger { 
-        display:flex; 
+        display:flex !important; 
     }
     
     /* Mobile Nav Styles (Display: none/flex handled here) */
