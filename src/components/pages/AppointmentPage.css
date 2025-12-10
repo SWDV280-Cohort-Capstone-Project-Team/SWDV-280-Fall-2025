@@ -50,6 +50,17 @@
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 2px solid #c7dce0;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+@media (max-width: 600px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
 }
 
 .dashboard-title {
@@ -72,18 +83,33 @@
 
 .dashboard-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 30px;
   margin-top: 30px;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
 }
 
 .dashboard-section {
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 20px;
   border: 1px solid #c7dce0;
   border-radius: 8px;
   background-color: #f8f2db;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .dashboard-section {
+    padding: 25px;
+  }
 }
 
 .section-header {
@@ -93,12 +119,34 @@
   margin-bottom: 20px;
   padding-bottom: 15px;
   border-bottom: 2px solid #c7dce0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .section-header h2 {
   margin: 0;
   color: #234e4d;
-  font-size: 1.5em;
+  font-size: 1.25em;
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .section-header h2 {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-header h2 {
+    font-size: 1.5em;
+  }
 }
 
 /* legacy appointment-card for backward compatibility */
@@ -117,8 +165,14 @@
   display: block;
   margin: 8px 0 6px;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1em;
   color: #234e4d;
+}
+
+@media (min-width: 768px) {
+  .appointment-form label {
+    font-size: 1.1em;
+  }
 }
 .text-input {
   display: block;
@@ -151,9 +205,15 @@ select.text-input {
 .services-row {
   display:flex;
   flex-wrap:wrap;
-  gap: 14px 20px;
+  gap: 10px 15px;
   margin: 12px 0 6px;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .services-row {
+    gap: 14px 20px;
+  }
 }
 .service-item {
   display: flex;
@@ -161,10 +221,25 @@ select.text-input {
   align-items: center;
   font-weight: 600;
   color: #234e4d;
+  font-size: 0.9em;
+  white-space: nowrap;
 }
+
+@media (min-width: 768px) {
+  .service-item {
+    font-size: 1em;
+  }
+}
+
 .service-item input[type="checkbox"] {
   width:18px;
   height:18px;
+  flex-shrink: 0;
+}
+
+.service-item label {
+  cursor: pointer;
+  user-select: none;
 }
 
 /* make the text area match */
@@ -193,6 +268,18 @@ select.text-input {
   display: flex;
   justify-content: flex-end;
   margin-top: 30px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .submit-row {
+    justify-content: stretch;
+  }
+  
+  .submit-row button {
+    width: 100%;
+  }
 }
 .submit-btn {
   padding: 0.6em 1.2em;
@@ -288,7 +375,20 @@ select.text-input {
 .appointment-form h2 {
   margin-bottom: 20px;
   color: #234e4d;
-  font-size: 1.5em;
+  font-size: 1.25em;
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .appointment-form h2 {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .appointment-form h2 {
+    font-size: 1.5em;
+  }
 }
 
 .user-email-display {
@@ -298,6 +398,8 @@ select.text-input {
   border: 1px solid #8dbbb7;
   border-radius: 8px;
   color: #234e4d;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .user-email-display p {
@@ -335,13 +437,53 @@ select.text-input {
   border: 1px solid #8dbbb7;
   background-color: #fff;
   color: #234e4d;
+  white-space: nowrap;
 }
+
+@media (max-width: 480px) {
+  .refresh-btn {
+    font-size: 0.85em;
+    padding: 0.4em 0.8em;
+  }
+}
+
 .refresh-btn:hover:not(:disabled) {
   background-color: #f8f2db;
 }
 .refresh-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Button group container for admin dashboard and general button groups */
+.dashboard-section > div:has(button.refresh-btn) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+@media (max-width: 480px) {
+  .dashboard-section > div:has(button.refresh-btn) {
+    flex-direction: column !important;
+  }
+  
+  .dashboard-section > div:has(button.refresh-btn) button {
+    width: 100%;
+  }
+}
+
+/* Fallback for browsers that don't support :has() */
+@supports not selector(:has(*)) {
+  .dashboard-section button.refresh-btn {
+    margin-bottom: 8px;
+  }
+  
+  @media (max-width: 480px) {
+    .dashboard-section button.refresh-btn {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
 }
 
 .appointments-list {
@@ -351,22 +493,45 @@ select.text-input {
 }
 
 .appointment-item {
-  padding: 20px;
+  padding: 15px;
   border: 1px solid #c7dce0;
   border-radius: 8px;
   background-color: #f8f2db;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .appointment-item {
+    padding: 20px;
+  }
 }
 
 .appointment-details h3 {
   margin: 0 0 10px 0;
   color: #234e4d;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .appointment-details h3 {
+    font-size: 1.2em;
+  }
 }
 
 .appointment-details p {
   margin: 8px 0;
   color: #234e4d;
-  font-size: 0.95em;
+  font-size: 0.9em;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .appointment-details p {
+    font-size: 0.95em;
+  }
 }
 
 .appointment-details strong {
@@ -416,9 +581,23 @@ select.text-input {
 /* Time slots container */
 .time-slots-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 8px;
   margin-top: 6px;
+}
+
+@media (min-width: 480px) {
+  .time-slots-container {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 9px;
+  }
+}
+
+@media (min-width: 768px) {
+  .time-slots-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
 }
 
 /* Ensure container hover doesn't affect button borders */
@@ -428,17 +607,33 @@ select.text-input {
 
 
 .time-slot {
-  padding: 10px 15px;
+  padding: 8px 10px;
   border: 2px solid #c7dce0;
   border-radius: 8px;
   background-color: #fff;
   color: #234e4d;
-  font-size: 0.9em;
+  font-size: 0.85em;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
   position: relative;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+@media (min-width: 480px) {
+  .time-slot {
+    padding: 9px 12px;
+    font-size: 0.88em;
+  }
+}
+
+@media (min-width: 768px) {
+  .time-slot {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
 }
 
 /* Prevent any hover effects except when explicitly hovered via React state */
@@ -492,28 +687,58 @@ select.text-input {
   color: #234e4d;
   font-weight: 600;
   text-align: center;
+  word-break: break-word;
+  font-size: 0.9em;
+}
+
+@media (min-width: 768px) {
+  .selected-date-display {
+    font-size: 1em;
+  }
 }
 
 /* Appointment Actions */
 .appointment-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-top: 15px;
   padding-top: 15px;
   border-top: 1px solid #c7dce0;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .appointment-actions {
+    gap: 10px;
+  }
 }
 
 .action-btn {
-  padding: 0.5em 1em;
-  font-size: 0.9em;
+  padding: 0.5em 0.8em;
+  font-size: 0.85em;
   font-weight: 600;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
   border: 1px solid;
   flex: 1;
-  min-width: 100px;
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+@media (min-width: 480px) {
+  .action-btn {
+    min-width: 90px;
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+  }
+}
+
+@media (min-width: 768px) {
+  .action-btn {
+    min-width: 100px;
+  }
 }
 
 .edit-btn {
@@ -571,30 +796,11 @@ select.text-input {
     max-width: 100%;
   }
   .dashboard-content {
-    grid-template-columns: 1fr;
     gap: 25px;
   }
-  .dashboard-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-  .dashboard-title {
-    font-size: 1.5em;
-  }
-  .time-slots-container {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 8px;
-  }
-  .time-slot {
-    padding: 8px 10px;
+  .refresh-btn {
     font-size: 0.85em;
-  }
-  .section-header h2 {
-    font-size: 1.25em;
-  }
-  .appointment-form h2 {
-    font-size: 1.25em;
+    padding: 0.4em 0.8em;
   }
 }
 
@@ -611,14 +817,6 @@ select.text-input {
   .dashboard-section {
     padding: 15px;
   }
-  .time-slots-container {
-    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-    gap: 6px;
-  }
-  .time-slot {
-    padding: 6px 8px;
-    font-size: 0.8em;
-  }
   .text-input,
   .comments {
     font-size: 0.95em;
@@ -627,5 +825,18 @@ select.text-input {
   .submit-btn {
     font-size: 1em;
     padding: 0.5em 1em;
+  }
+  .card-title {
+    font-size: 1.3em;
+  }
+  .dashboard-title {
+    font-size: 1.3em;
+  }
+  .appointment-form h3 {
+    font-size: 1.1em;
+  }
+  .sign-out-btn {
+    width: 100%;
+    padding: 0.6em 1em;
   }
 }
