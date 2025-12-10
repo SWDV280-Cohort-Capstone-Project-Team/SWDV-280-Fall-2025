@@ -427,36 +427,33 @@ export default function AdminDashboard() {
                   })}` : 
                   'Select a date to view appointments'}
               </h2>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                {selectedDate && !showAllAppointments && (
-                  <button 
-                    onClick={() => setShowAllAppointments(true)} 
-                    className="refresh-btn"
-                  >
-                    View All
-                  </button>
-                )}
-                {showAllAppointments && (
-                  <button 
-                    onClick={() => {
-                      setShowAllAppointments(false);
-                      if (selectedDate) {
-                        // Keep the selected date when switching back
-                      }
-                    }} 
-                    className="refresh-btn"
-                  >
-                    View Day
-                  </button>
-                )}
+            </div>
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', paddingBottom: '15px', borderBottom: '2px solid #c7dce0' }}>
+              {!showAllAppointments && (
                 <button 
-                  onClick={fetchAllAppointments} 
+                  onClick={() => setShowAllAppointments(true)} 
                   className="refresh-btn"
-                  disabled={loadingAllAppointments}
                 >
-                  {loadingAllAppointments ? "Loading..." : "Refresh"}
+                  View All
                 </button>
-              </div>
+              )}
+              {showAllAppointments && selectedDate && (
+                <button 
+                  onClick={() => {
+                    setShowAllAppointments(false);
+                  }} 
+                  className="refresh-btn"
+                >
+                  View Day
+                </button>
+              )}
+              <button 
+                onClick={fetchAllAppointments} 
+                className="refresh-btn"
+                disabled={loadingAllAppointments}
+              >
+                {loadingAllAppointments ? "Loading..." : "Refresh"}
+              </button>
             </div>
             
             {(() => {
