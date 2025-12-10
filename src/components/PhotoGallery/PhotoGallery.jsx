@@ -7,12 +7,16 @@ import image1 from '../../assets/images/Gallery1.jpg';
 import image2 from '../../assets/images/Gallery2.jpg';
 import image3 from '../../assets/images/Gallery3.jpg';
 import image4 from '../../assets/images/Gallery4.jpg';
+import image5 from '../../assets/images/Gallery5.jpg';
+import image6 from '../../assets/images/Gallery6.jpg';
 
 const IMAGES = [
-  { id: 1, src: image1, alt: 'Gallery Image 1' },
+  { id: 1, src: image5, alt: 'Gallery Image 5' },
   { id: 2, src: image2, alt: 'Gallery Image 2' },
   { id: 3, src: image3, alt: 'Gallery Image 3' },
-  { id: 4, src: image4, alt: 'Gallery Image 4' },
+  { id: 4, src: image6, alt: 'Gallery Image 6' },
+  { id: 5, src: image1, alt: 'Gallery Image 1' },
+  { id: 6, src: image4, alt: 'Gallery Image 4' },
 ];
 
 const PhotoGallery = () => {
