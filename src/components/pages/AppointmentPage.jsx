@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { signUp, signIn, signOut, getCurrentUser, confirmSignUp, resendSignUpCode, fetchUserAttributes } from "aws-amplify/auth";
 import { generateClient } from "aws-amplify/data";
 import Calendar from "../Calendar/Calendar";
@@ -28,6 +29,7 @@ const initialAuthForm = {
 };
 
 export default function AppointmentPage() {
+  const navigate = useNavigate();
   const [form, setForm] = useState(getInitialForm());
   const [authForm, setAuthForm] = useState(initialAuthForm);
   const [submitted, setSubmitted] = useState(false);
@@ -53,6 +55,17 @@ export default function AppointmentPage() {
   useEffect(() => {
     checkAuthStatus();
   }, []);
+
+  // Navigate to appointment page when user successfully authenticates
+  useEffect(() => {
+    if (user && isEmailVerified) {
+      // Ensure we're on the appointment page
+      const currentPath = window.location.hash;
+      if (currentPath !== '#/appointment' && currentPath !== '#/') {
+        navigate('/appointment', { replace: true });
+      }
+    }
+  }, [user, isEmailVerified, navigate]);
 
   async function checkAuthStatus() {
     try {
@@ -140,10 +153,21 @@ export default function AppointmentPage() {
         password: authForm.password,
       });
       
+      // Update auth status first to get user state
+      await checkAuthStatus();
+      
       setSuccess("Signed in successfully!");
       setShowLogin(false);
       setLoading(false);
-      await checkAuthStatus();
+      
+      // Navigate to appointment page to ensure we're on the right route
+      // Use setTimeout to ensure state updates are complete
+      setTimeout(() => {
+        navigate('/appointment', { replace: true });
+        // Force a page refresh of the component state
+        window.location.hash = '#/appointment';
+      }, 100);
+      
       // Email will be auto-populated in checkAuthStatus
     } catch (err) {
       setError(err.message || "Failed to sign in");
@@ -177,6 +201,12 @@ export default function AppointmentPage() {
         setAuthForm({ ...authForm, password: "" });
         // Update auth status to reflect signed-in state
         await checkAuthStatus();
+        
+        // Navigate to appointment page after verification and sign-in
+        setTimeout(() => {
+          navigate('/appointment', { replace: true });
+          window.location.hash = '#/appointment';
+        }, 100);
       } catch (signInErr) {
         // If auto-sign-in fails, show login form
         setError("Email verified, but automatic sign-in failed. Please sign in manually.");
